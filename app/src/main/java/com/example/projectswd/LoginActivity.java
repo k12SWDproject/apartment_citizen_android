@@ -32,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
         final String username = edtUsername.getText().toString();
         edtPassword = findViewById(R.id.txtPassword);
         String password = edtPassword.getText().toString();
+        String password = edtPassword.getText().toString();
+        String password = edtPassword.getText().toString();
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl("").addConverterFactory(GsonConverterFactory.create()).build();
 
