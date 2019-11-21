@@ -1,6 +1,8 @@
 package com.example.projectswd.model;
 
-public class House {
+import java.io.Serializable;
+
+public class House implements Serializable {
     private Integer id;
     private String houseName;
     private String Description;
