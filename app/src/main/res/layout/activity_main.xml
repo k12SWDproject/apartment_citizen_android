@@ -1,45 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#e1e1ea"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
-    <TextView
+
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="hello"
-        android:id="@+id/txtInfo"
-        android:background="@drawable/images"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="31dp"
-        android:layout_margin="10dp"
-
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="#ffff"
-            android:gravity="center"
-            android:text="Số dư trong tài khoản"
-
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txtSodu"
+        android:layout_marginBottom="70dp"
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffff"
-            android:gravity="right|center"
-            android:text="100.000.000" />
-    </LinearLayout>
+            android:orientation="vertical"
+
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="hello"
+                android:id="@+id/txtInfo"
+                android:background="@drawable/images"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="31dp"
+                android:layout_margin="10dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="#ffff"
+                    android:gravity="center"
+                    android:text="Số dư trong tài khoản"
+
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtSodu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffff"
+                    android:gravity="right|center"
+                    android:text="100.000.000" />
+            </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,6 +60,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="10dp"
         />
+
 <LinearLayout
     android:layout_width="match_parent"
     android:orientation="horizontal"
@@ -64,6 +76,7 @@
         android:layout_marginLeft="25dp"
         android:layout_weight="3.5"
         android:background="#ffff"
+        android:onClick="clickToElectric"
         android:text="Điện" />
 
 
@@ -108,6 +121,13 @@
 
 
     </LinearLayout>
+
+
+
+
+
+
+
 
     <TextView
         android:layout_width="match_parent"
@@ -173,5 +193,64 @@
 
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="8"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:drawableTop="@drawable/light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Điện"
+            android:layout_weight="3.5"
+            android:layout_marginLeft="25dp"
+            android:background="#ffff"
+            />
+        <Button
+            android:drawableTop="@drawable/light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Điện"
+            android:layout_weight="3.5"
+            android:layout_marginLeft="25dp"
+            android:background="#ffff"
+            />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="8"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:drawableTop="@drawable/light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Điện"
+            android:layout_weight="3.5"
+            android:layout_marginLeft="25dp"
+            android:background="#ffff"
+            />
+        <Button
+            android:drawableTop="@drawable/light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Điện"
+            android:layout_weight="3.5"
+            android:layout_marginLeft="25dp"
+            android:background="#ffff"
+            />
+
+
+    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
     <include layout="@layout/activity_menu"/>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

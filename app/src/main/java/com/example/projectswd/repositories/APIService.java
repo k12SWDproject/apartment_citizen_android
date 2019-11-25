@@ -1,8 +1,10 @@
-package com.example.projectswd.apiservice;
+package com.example.projectswd.repositories;
 
 
 
+import com.example.projectswd.model.HouseRecipt;
 import com.example.projectswd.model.User;
+import com.example.projectswd.utils.ConfigAPI;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -19,10 +21,12 @@ import retrofit2.http.Query;
 public interface APIService {
 
 
-    @POST("login")
+    @POST(ConfigAPI.Api.LOGIN)
     Call<ResponseBody> gettToken(@Query("username") String username, @Query("password") String password);
 
-    @GET("api/user/{username}")
-    Call<User> getInforByUsername (@Path("username") String username, @Header("Authorization")  String token );
+    @GET(ConfigAPI.Api.GETUSER)
+        Call<User> getInforByUsername (@Path("username") String username, @Header("Authorization")  String token );
     // @Header("Author") String
+    @GET(ConfigAPI.Api.GETRECEIPTS)
+    Call<HouseRecipt> getListRecipts (@Path("type") String type,@Header("Authorization")  String token );
 }

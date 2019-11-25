@@ -1,19 +1,16 @@
-package com.example.projectswd;
+package com.example.projectswd.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.projectswd.apiservice.APIService;
+import com.example.projectswd.R;
+import com.example.projectswd.repositories.APIService;
 import com.example.projectswd.model.User;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 
@@ -28,9 +25,10 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText edtUsername, edtPassword;
     EditText txtTemp;
-    Button btnLogin;
+
     String token;
     String username;
+    String password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +39,9 @@ public class LoginActivity extends AppCompatActivity {
         edtUsername = findViewById(R.id.txtUsername);
          username = edtUsername.getText().toString();
         edtPassword = findViewById(R.id.txtPassword);
-        String password = edtPassword.getText().toString();
+         password = edtPassword.getText().toString();
         txtTemp = findViewById(R.id.txtTmp);
-//        Gson gson = new GsonBuilder()
-//                .setLenient()
-//                .create();
+
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://spwproject.herokuapp.com/").addConverterFactory(GsonConverterFactory.create()).build();
 
         APIService json = retrofit.create(APIService.class);
@@ -58,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     try {
                         token = (response.body().string());
+//                        txtTemp.setText(token);
                         getInfo(token);
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -65,13 +62,13 @@ public class LoginActivity extends AppCompatActivity {
                     return;
 
                 }
-                Toast.makeText(LoginActivity.this, "Failed ----", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                txtTemp.setText("---------------------");
+                Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -104,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(LoginActivity.this, "LLLLLLLLLLLLLL", Toast.LENGTH_SHORT).show();
     }
 });
-//        call.enqueue(new Callback<ResponseBody>() {
+
 
     }
 }
