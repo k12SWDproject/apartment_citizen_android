@@ -2,11 +2,14 @@ package com.example.projectswd.model;
 
 
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class User  {
+public class User implements Serializable {
     private int id;
     private String username;
     private String password;
