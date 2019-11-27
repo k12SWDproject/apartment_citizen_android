@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                         user = response.body();
                      Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                      intent.putExtra("USERINFO", user);
-                        intent.putExtra("TOKEN", token);
+                     intent.putExtra("TOKEN", token);
                      startActivity(intent);
                         return;
 

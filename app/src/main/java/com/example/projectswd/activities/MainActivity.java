@@ -32,8 +32,15 @@ public class MainActivity extends AppCompatActivity {
     public void clickToElectric(View view) {
         Intent  intent = new Intent(getApplicationContext(), ElectricActivity.class);
         intent.putExtra("TOKEN", token);
+        intent.putExtra("USERINFO",user);
         startActivity(intent);
     }
 
 
+    public void clickToWater(View view) {
+        Intent  intent = new Intent(getApplicationContext(), WaterActivity.class);
+        intent.putExtra("TOKEN", token);
+        intent.putExtra("USERINFO",user);
+        startActivity(intent);
+    }
 }

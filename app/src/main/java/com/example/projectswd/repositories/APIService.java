@@ -27,6 +27,10 @@ public interface APIService {
     @GET(ConfigAPI.Api.GETUSER)
         Call<User> getInforByUsername (@Path("username") String username, @Header("Authorization")  String token );
     // @Header("Author") String
+//    @GET(ConfigAPI.Api.GETRECEIPTS)
+//    Call<HouseRecipt> getListRecipts (@Path("type") String type,@Header("Authorization")  String token );
+
     @GET(ConfigAPI.Api.GETRECEIPTS)
+    @Headers("Content-Type:application/json")
     Call<HouseRecipt> getListRecipts (@Path("type") String type,@Header("Authorization")  String token );
 }
