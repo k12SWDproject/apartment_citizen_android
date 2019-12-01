@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
+    tools:context=".activities.ProfileActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@drawable/wallpaper1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:src="@drawable/profile"
+                android:elevation="1dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+               <androidx.cardview.widget.CardView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="60dp"
+                   app:contentPaddingBottom="15dp"
+                   app:contentPaddingLeft="15dp"
+                   app:contentPaddingRight="15dp"
+                   app:contentPaddingTop="40dp"
+                   app:cardCornerRadius="20dp">
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="vertical">
+                       <TextView
+                           android:id="@+id/titleName"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+
+                           android:gravity="center"
+                           android:text="Nguyễn Minh Trí"
+                           android:textColor="#000000"
+                           android:textSize="20dp"
+                           android:textStyle="bold" />
+
+                       <TextView
+                           android:id="@+id/titleApartment"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_below="@id/titleName"
+                           android:gravity="center"
+                           android:text="Apartment"
+                           android:textColor="#000000"
+                           android:textSize="15dp" />
+
+                       <TextView
+                           android:id="@+id/numberApartment"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_below="@id/titleApartment"
+                           android:gravity="center"
+                           android:text="AB-504"
+                           android:textColor="#000000"
+                           android:textSize="20dp"
+                           android:textStyle="bold" />
+                   </LinearLayout>
+
+
+
+
+
+
+               </androidx.cardview.widget.CardView>
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    >
+
+                    <TableRow android:layout_margin="5dp"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Họ và tên"
+                            android:textColor="@color/blackFont"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:layout_marginRight="10dp"/>
+
+                        <EditText
+                            android:id="@+id/edtFullname"
+                            style="@style/styleForEditText"
+                            android:hint="Name"
+                            android:background="@drawable/edt_greneral"
+                            />
+                    </TableRow>
+
+                    <TableRow android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Giới tính"
+                            android:textColor="@color/blackFont"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/edtGender"
+                            android:hint="Gender"
+                            style="@style/styleForEditText"
+                            android:background="@drawable/edt_greneral" />
+                    </TableRow>
+
+                    <TableRow android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ngày sinh"
+                            android:textColor="@color/blackFont"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/edtBirthdate"
+                            android:hint="Birhdate"
+                            style="@style/styleForEditText"
+                            android:background="@drawable/edt_greneral"/>
+                    </TableRow>
+
+                    <TableRow android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Email"
+                            android:textColor="@color/blackFont"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/edtEmail"
+                            android:hint="Email"
+                            style="@style/styleForEditText"
+                            android:background="@drawable/edt_greneral"/>
+                    </TableRow>
+
+                    <TableRow android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="SĐT"
+                            android:textColor="@color/blackFont"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/edtNumberphone"
+                            android:hint="Number"
+                            style="@style/styleForEditText"
+                            android:background="@drawable/edt_greneral"/>
+                    </TableRow>
+
+
+                </TableLayout>
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   >
+                   <Button
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="Chỉnh sửa thông tin cá nhân"
+                       android:background="@drawable/round_bg"
+                       android:textColor="#FFF"
+                       android:textStyle="bold"
+                       android:layout_marginTop="30dp"
+                       android:layout_marginBottom="10dp"
+                       android:visibility="visible"
+                       android:id="@+id/editButton"
+                       android:onClick="clickToEdit"
+                       />
+                   <Button
+                       android:visibility="invisible"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="Cập nhật thông tin cá nhân"
+                       android:background="@drawable/round_bg"
+                       android:textColor="#FFF"
+                       android:textStyle="bold"
+                       android:layout_marginTop="30dp"
+                       android:layout_marginBottom="10dp"
+                       android:id="@+id/updateButton"
+                       />
+               </RelativeLayout>
+
+
+
+
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

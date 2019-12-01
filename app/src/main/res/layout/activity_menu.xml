@@ -6,7 +6,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.projectswd.activities.MenuActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/wallpaper1"
+        tools:ignore="MissingConstraints">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/profile"
+            android:onClick="clickToProfile"/>
+        <TextView
+            android:id="@+id/txtNameOwner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text="Nguyen Minh Tri"
+            android:layout_below="@id/imageView"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/txtAparmentID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text="APARTMENT-001"
+            android:layout_below="@id/txtNameOwner"
+            android:gravity="center"/>
+
+
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/fragment_content"

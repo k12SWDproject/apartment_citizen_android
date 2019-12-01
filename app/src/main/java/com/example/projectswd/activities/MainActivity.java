@@ -19,14 +19,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ;
+
 
         Intent intent = getIntent();
          user = (User) intent.getSerializableExtra("USERINFO");
          token = intent.getStringExtra("TOKEN");
          house = user.getHouse();
-        TextView txtInfo = findViewById(R.id.txtInfo);
-        txtInfo.setText(user.getId() +" - "+house.getHouseName());
+         TextView txtName = findViewById(R.id.txtNameOwner);
+         txtName.setText(user.getUsername());
+         TextView txtApID = findViewById(R.id.txtAparmentID);
+         txtApID.setText(house.getHouseName());
+         TextView txtInfo = findViewById(R.id.txtInfo);
+         txtInfo.setText(user.getId() +" - "+house.getHouseName());
     }
 
     public void clickToElectric(View view) {
@@ -39,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickToWater(View view) {
         Intent  intent = new Intent(getApplicationContext(), WaterActivity.class);
+        intent.putExtra("TOKEN", token);
+        intent.putExtra("USERINFO",user);
+        startActivity(intent);
+    }
+
+    public void clickToProfile(View view) {
+        Intent  intent = new Intent(getApplicationContext(), ProfileActivity.class);
         intent.putExtra("TOKEN", token);
         intent.putExtra("USERINFO",user);
         startActivity(intent);

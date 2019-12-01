@@ -11,13 +11,18 @@ import android.widget.TextView;
 
 import com.example.projectswd.fragments.HomeFragment;
 import com.example.projectswd.R;
+import com.example.projectswd.model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MenuActivity extends AppCompatActivity {
-    private TextView mTextMessage;
+    private TextView mTextMessage,txtNameOwner,txtApartmentNumber;
     private BottomNavigationView btna;
     private Fragment fragment;
-    Intent intent = new Intent();
+
+
+
+
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener =new
             BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
