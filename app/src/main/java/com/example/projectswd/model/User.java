@@ -146,4 +146,25 @@ public class User implements Serializable {
     public void setMoney(BigDecimal money) {
         this.money = money;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", house=" + house +
+                ", creator=" + creator +
+                ", profileImage='" + profileImage + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", idNumber='" + idNumber + '\'' +
+                ", gender=" + gender +
+                ", fullName='" + fullName + '\'' +
+                ", createDate=" + createDate +
+                ", lastModified=" + lastModified +
+                ", status=" + status +
+                ", money=" + money +
+                '}';
+    }
 }
