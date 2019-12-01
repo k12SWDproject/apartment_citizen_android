@@ -4,254 +4,249 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#e1e1ea"
+    android:orientation="vertical"
     tools:context=".activities.MainActivity">
-
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_marginBottom="70dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70dp">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
+            android:layout_height="match_parent"
 
-            android:layout_height="match_parent">
+            android:orientation="vertical">
+
             <TextView
+                android:id="@+id/txtInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="hello"
-                android:id="@+id/txtInfo"
                 android:background="@drawable/images"
-                />
+                android:text="hello" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="31dp"
                 android:layout_margin="10dp"
-
+                android:background="#ffff"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="#ffff"
+
                     android:gravity="center"
                     android:text="Số dư trong tài khoản"
-
+                    android:layout_marginLeft="10dp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/txtSodu"
+                    android:id="@+id/txtMoneyOfUser"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#ffff"
+                    android:layout_marginRight="10dp"
+
                     android:gravity="right|center"
                     android:text="100.000.000" />
             </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Thanh Toán"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="10dp"
-        />
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:orientation="horizontal"
-    android:weightSum="8"
-    android:layout_marginTop="20dp"
-    android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Thanh Toán"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
-
-    <Button
-        android:drawableTop="@drawable/light"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="25dp"
-        android:layout_weight="3.5"
-        android:background="#ffff"
-        android:onClick="clickToElectric"
-        android:text="Điện" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="8">
 
 
-
-        <Button
-            android:drawableTop="@drawable/light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Điện"
-            android:layout_weight="3.5"
-            android:layout_marginLeft="25dp"
-            android:background="#ffff"
-            android:onClick="clickToWater"
-            />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="3.5"
+                    android:background="#ffff"
+                    android:drawableTop="@drawable/light"
+                    android:onClick="clickToElectric"
+                    android:text="Điện" />
 
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:weightSum="8"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:drawableTop="@drawable/light"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="đasds"
-        android:layout_weight="3.5"
-        android:layout_marginLeft="25dp"
-        android:background="#ffff"
-        />
-        <Button
-            android:drawableTop="@drawable/light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Điện"
-            android:layout_weight="3.5"
-            android:layout_marginLeft="25dp"
-            android:background="#ffff"
-            />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="3.5"
+                    android:background="#ffff"
+                    android:drawableTop="@drawable/light"
+                    android:onClick="clickToWater"
+                    android:text="Nước" />
 
 
-    </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="8">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="3.5"
+                    android:background="#ffff"
+                    android:drawableTop="@drawable/light"
+                    android:onClick="clickToWifi"
+                    android:text="Wifi" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="3.5"
+                    android:background="#ffff"
+                    android:drawableTop="@drawable/light"
+                    android:onClick="clickToPhiChungCu"
+                    android:text="Phí chung cư" />
 
 
+            </LinearLayout>
 
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Dịch vụ"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                android:weightSum="8">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="3.5"
+                    android:background="#ffff"
+                    android:drawableTop="@drawable/light"
+                    android:text="Điện" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="3.5"
+                    android:background="#ffff"
+                    android:drawableTop="@drawable/light"
+                    android:text="Điện" />
 
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="8">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="3.5"
+                    android:background="#ffff"
+                    android:drawableTop="@drawable/light"
+                    android:text="Điện" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="3.5"
+                    android:background="#ffff"
+                    android:drawableTop="@drawable/light"
+                    android:text="Điện" />
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Dịch vụ"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="10dp"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="8"
+            </LinearLayout>
 
-        android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="8">
 
-        <Button
-            android:drawableTop="@drawable/light"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="25dp"
-            android:layout_weight="3.5"
-            android:background="#ffff"
-            android:text="Điện" />
-        <Button
-            android:drawableTop="@drawable/light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Điện"
-            android:layout_weight="3.5"
-            android:layout_marginLeft="25dp"
-            android:background="#ffff"
-            />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="3.5"
+                    android:background="#ffff"
+                    android:drawableTop="@drawable/light"
+                    android:text="Điện" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="3.5"
+                    android:background="#ffff"
+                    android:drawableTop="@drawable/light"
+                    android:text="Điện" />
 
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="8"
-        android:layout_marginTop="20dp"
-        android:layout_height="wrap_content">
+            </LinearLayout>
 
-        <Button
-            android:drawableTop="@drawable/light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Điện"
-            android:layout_weight="3.5"
-            android:layout_marginLeft="25dp"
-            android:background="#ffff"
-            />
-        <Button
-            android:drawableTop="@drawable/light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Điện"
-            android:layout_weight="3.5"
-            android:layout_marginLeft="25dp"
-            android:background="#ffff"
-            />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="8">
 
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="3.5"
+                    android:background="#ffff"
+                    android:drawableTop="@drawable/light"
+                    android:text="Điện" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="8"
-        android:layout_marginTop="20dp"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:drawableTop="@drawable/light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Điện"
-            android:layout_weight="3.5"
-            android:layout_marginLeft="25dp"
-            android:background="#ffff"
-            />
-        <Button
-            android:drawableTop="@drawable/light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Điện"
-            android:layout_weight="3.5"
-            android:layout_marginLeft="25dp"
-            android:background="#ffff"
-            />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="3.5"
+                    android:background="#ffff"
+                    android:drawableTop="@drawable/light"
+                    android:text="Điện" />
 
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="8"
-        android:layout_marginTop="20dp"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:drawableTop="@drawable/light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Điện"
-            android:layout_weight="3.5"
-            android:layout_marginLeft="25dp"
-            android:background="#ffff"
-            />
-        <Button
-            android:drawableTop="@drawable/light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Điện"
-            android:layout_weight="3.5"
-            android:layout_marginLeft="25dp"
-            android:background="#ffff"
-            />
-
-
-    </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
-    <include layout="@layout/activity_menu"/>
+
+    <include layout="@layout/activity_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>

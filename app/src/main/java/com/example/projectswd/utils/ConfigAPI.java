@@ -5,7 +5,9 @@ public class ConfigAPI {
 
     public interface Api{
         String LOGIN = "login";
-        String GETUSER ="api/user/{username}";
+        String GETUSER ="api/users/{username}";
         String GETRECEIPTS ="api/receipts/user/{type}";
+        String GETDETAILRECEIPT ="api/receipts";
+        String PAYRECEIPT = "api/receipts/{id}/status";
     }
 }

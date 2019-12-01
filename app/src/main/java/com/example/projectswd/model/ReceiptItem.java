@@ -3,7 +3,7 @@ package com.example.projectswd.model;
 import java.io.Serializable;
 import java.math.BigInteger;
 
-public class Receipts implements Serializable {
+public class ReceiptItem implements Serializable {
     private String receiptId;
     private String receiptName;
     private BigInteger total;
