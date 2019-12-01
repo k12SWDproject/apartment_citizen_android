@@ -13,18 +13,18 @@ import android.widget.Toast;
 
 import com.example.projectswd.R;
 import com.example.projectswd.adapter.ElectricAdapter;
-import com.example.projectswd.model.User;
-import com.example.projectswd.presenters.GetListReciptPresenter;
 import com.example.projectswd.model.HouseRecipt;
 import com.example.projectswd.model.ReceiptItem;
+import com.example.projectswd.model.User;
+import com.example.projectswd.presenters.GetListReciptPresenter;
 import com.example.projectswd.views.GetListReciptView;
 
 import java.util.List;
 
-public class ElectricActivity extends AppCompatActivity implements GetListReciptView {
+public class OrtherActivity extends AppCompatActivity implements GetListReciptView {
 
     ListView lvNotPayedReceipt, lvPayedReceipt;
-    TextView txtUserinfo, txtReceitpsPayedNull, txtReceitpsNotPayNull;
+    TextView txtUserinfo, txtOrtherPhaiThanhToanNull,txtOrtherDaThanhToanNull;
     String token;
     User user;
     private HouseRecipt houseRecipts;
@@ -33,52 +33,41 @@ public class ElectricActivity extends AppCompatActivity implements GetListRecipt
     private GetListReciptPresenter getListReciptPresenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_electric);
+    protected void onStart() {
+        super.onStart();
         Intent intent = getIntent();
         token = intent.getStringExtra("TOKEN");
-        user = new User();
         user = (User) intent.getSerializableExtra("USERINFO");
 
         getListReciptPresenter = new GetListReciptPresenter(this);
-        getListReciptPresenter.getList(token, "ELECTRIC_TYPE");
-
-
-        lvPayedReceipt = findViewById(R.id.lvElectricReceiptsPayed);
-        lvNotPayedReceipt = findViewById(R.id.lvElectricReceiptsNotPay);
-        txtUserinfo = findViewById(R.id.txtUserInfoElect);
-        txtReceitpsNotPayNull = findViewById(R.id.txtElectricReceiptNotPayNull);
-        txtReceitpsPayedNull = findViewById(R.id.txtElectricReceiptPayedNull);
-
-
+        getListReciptPresenter.getList(token, "ORTHER_TYPE");
         txtUserinfo.setText(user.getHouse().getHouseName());
-        lvPayedReceipt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    }
 
-            }
-        });
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_orther);
 
-        lvNotPayedReceipt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-        });
+        lvPayedReceipt = findViewById(R.id.lvOrtherReceiptsPayed);
+        lvNotPayedReceipt = findViewById(R.id.lvOrtherReceiptsNotPay);
+        txtUserinfo = findViewById(R.id.txtUserInfoOrther);
+        txtOrtherDaThanhToanNull = findViewById(R.id.txtOrtherReceiptsPayedNull);
+        txtOrtherPhaiThanhToanNull = findViewById(R.id.txtOrtherReceiptsNotPayNull);
+        onStart();
+
+
+
 
     }
 
-
-
     @Override
     public void getListReciptSuccess(HouseRecipt houseRecipt) {
+
         houseRecipts = houseRecipt;
-        showListNotPay();
         showListPayed();
-
-
-
+       showListNotPay();
     }
 
     @Override
@@ -90,14 +79,15 @@ public class ElectricActivity extends AppCompatActivity implements GetListRecipt
         adapterPayed = new ElectricAdapter();
         List<ReceiptItem> listPayed = houseRecipts.getListPayedReceipt();
         if(listPayed.size()==0){
-            txtReceitpsPayedNull.setVisibility(View.VISIBLE);
-            txtReceitpsPayedNull.setText("Bạn không có hóa đơn đã thanh toán");
+            txtOrtherDaThanhToanNull.setVisibility(View.VISIBLE);
+            txtOrtherDaThanhToanNull.setText("Bạn không có hóa đơn đã thanh toán");
             lvPayedReceipt.setVisibility(View.GONE);
         }else{
             adapterPayed.setListReceipt(listPayed);
 
             LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) lvPayedReceipt.getLayoutParams();
-            lp.height = 257* listPayed.size();
+            lp.height = 265* listPayed.size();
+            
             lvPayedReceipt.setLayoutParams(lp);
             lvPayedReceipt.setAdapter(adapterPayed);
             lvPayedReceipt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -106,7 +96,7 @@ public class ElectricActivity extends AppCompatActivity implements GetListRecipt
                     ReceiptItem receiptItem = (ReceiptItem) adapterPayed.getItem(position);
                     Intent intent = new Intent(getApplicationContext(), DetailPayedActivity.class);
                     intent.putExtra("ID", receiptItem.getReceiptId());
-                    intent.putExtra("NAMEQUANTITY", "Điện năng tiêu thụ");
+                    intent.putExtra("NAMEQUANTITY", "");
                     intent.putExtra("TOKEN", token);
                     intent.putExtra("USERINFO", user);
                     startActivity(intent);
@@ -119,8 +109,8 @@ public class ElectricActivity extends AppCompatActivity implements GetListRecipt
         List<ReceiptItem> listNotPay = houseRecipts.getListNotPayedReceipt();
         adapterNotPay = new ElectricAdapter();
         if(listNotPay.size()==0){
-            txtReceitpsNotPayNull.setVisibility(View.VISIBLE);
-            txtReceitpsNotPayNull.setText("Bạn không có hóa đơn cần phải thanh toán");
+            txtOrtherPhaiThanhToanNull.setVisibility(View.VISIBLE);
+            txtOrtherPhaiThanhToanNull.setText("Bạn không có hóa đơn cần phải thanh toán");
             lvNotPayedReceipt.setVisibility(View.GONE);
         }else{
             adapterNotPay.setListReceipt(listNotPay);
@@ -136,7 +126,7 @@ public class ElectricActivity extends AppCompatActivity implements GetListRecipt
                     ReceiptItem receiptItem = (ReceiptItem) adapterNotPay.getItem(position);
                     Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
                     intent.putExtra("ID", receiptItem.getReceiptId());
-                    intent.putExtra("NAMEQUANTITY", "Điện năng tiêu thụ");
+                    intent.putExtra("NAMEQUANTITY", "Số tháng (Số lần): ");
                     intent.putExtra("TOKEN", token);
                     intent.putExtra("USERINFO", user);
                     startActivity(intent);

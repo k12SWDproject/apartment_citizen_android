@@ -7,8 +7,8 @@ public class HouseRecipt implements Serializable {
 
     private int houseId;
     private String houseName;
-    private List<Receipts> listPayedReceipt;
-    private List<Receipts> listNotPayedReceipt;
+    private List<ReceiptItem> listPayedReceipt;
+    private List<ReceiptItem> listNotPayedReceipt;
 
     public int getHouseId() {
         return houseId;
@@ -26,19 +26,19 @@ public class HouseRecipt implements Serializable {
         this.houseName = houseName;
     }
 
-    public List<Receipts> getListPayedReceipt() {
+    public List<ReceiptItem> getListPayedReceipt() {
         return listPayedReceipt;
     }
 
-    public void setListPayedReceipt(List<Receipts> listPayedReceipt) {
+    public void setListPayedReceipt(List<ReceiptItem> listPayedReceipt) {
         this.listPayedReceipt = listPayedReceipt;
     }
 
-    public List<Receipts> getListNotPayedReceipt() {
+    public List<ReceiptItem> getListNotPayedReceipt() {
         return listNotPayedReceipt;
     }
 
-    public void setListNotPayedReceipt(List<Receipts> listNotPayedReceipt) {
+    public void setListNotPayedReceipt(List<ReceiptItem> listNotPayedReceipt) {
         this.listNotPayedReceipt = listNotPayedReceipt;
     }
 }

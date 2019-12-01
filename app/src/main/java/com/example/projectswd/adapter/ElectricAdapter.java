@@ -4,30 +4,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.projectswd.R;
-import com.example.projectswd.model.HouseRecipt;
-import com.example.projectswd.model.Receipts;
+import com.example.projectswd.model.ReceiptItem;
 
 import java.util.List;
 
 public class ElectricAdapter extends BaseAdapter {
-    private List<Receipts> listReceipt;
-
+    private List<ReceiptItem> listReceipt;
+    TextView txtSoNha;
     public ElectricAdapter() {
     }
 
-    public ElectricAdapter(List<Receipts> listReceipt) {
+    public ElectricAdapter(List<ReceiptItem> listReceipt) {
         this.listReceipt = listReceipt;
     }
 
-    public List<Receipts> getListReceipt() {
+    public List<ReceiptItem> getListReceipt() {
         return listReceipt;
     }
 
-    public void setListReceipt(List<Receipts> listReceipt) {
+    public void setListReceipt(List<ReceiptItem> listReceipt) {
         this.listReceipt = listReceipt;
     }
 
@@ -50,22 +49,22 @@ public class ElectricAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            convertView = inflater.inflate(R.layout.item_electric, parent, false);
+            convertView = inflater.inflate(R.layout.item_receipt, parent, false);
         }
+        ReceiptItem receiptItem = listReceipt.get(position);
         TextView txtTenHoaDon = convertView.findViewById(R.id.txtTenHoaDon);
-        TextView txtSoNha = convertView.findViewById(R.id.txtSonha);
-        TextView txtSoDien = convertView.findViewById(R.id.txtSodienSuDung);
+
         TextView txtThanhGia = convertView.findViewById(R.id.txtThanhGia);
 
-        txtTenHoaDon.setText(listReceipt.get(position).getReceiptName());
-        txtSoNha.setText("ABC-123");
-        txtSoDien.setText("Số điện: "+listReceipt.get(position).getQuantity()+"");
-        txtThanhGia.setText("Thành Giá: "+listReceipt.get(position).getTotal()+"");
-        ImageButton imgButton = convertView.findViewById(R.id.btnThanhToan);
-        if(listReceipt.get(position).getStatus()==1){
-            imgButton.setBackgroundResource(R.drawable.button_thanh_toan);
+        txtTenHoaDon.setText(receiptItem.getReceiptName());
+
+
+        txtThanhGia.setText("Thành Giá: "+ receiptItem.getTotal()+"");
+        ImageView imageView = convertView.findViewById(R.id.btnThanhToan);
+        if(receiptItem.getStatus()==1){
+            imageView.setBackgroundResource(R.drawable.button_thanh_toan);
         }else {
-            imgButton.setBackgroundResource(R.drawable.btn_da_thanh_toan);
+            imageView.setBackgroundResource(R.drawable.btn_da_thanh_toan);
         }
 
 
