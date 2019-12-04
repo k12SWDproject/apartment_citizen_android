@@ -12,25 +12,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projectswd.R;
-import com.example.projectswd.adapter.ElectricAdapter;
+import com.example.projectswd.adapter.ReceiptAdapter;
+import com.example.projectswd.contract.OrtherActivityContract;
 import com.example.projectswd.model.HouseRecipt;
 import com.example.projectswd.model.ReceiptItem;
 import com.example.projectswd.model.User;
-import com.example.projectswd.presenters.GetListReciptPresenter;
-import com.example.projectswd.views.GetListReciptView;
+import com.example.projectswd.presenters.OrtherActivityPresenter;
 
 import java.util.List;
 
-public class OrtherActivity extends AppCompatActivity implements GetListReciptView {
+public class OrtherActivity extends AppCompatActivity implements OrtherActivityContract.view {
 
     ListView lvNotPayedReceipt, lvPayedReceipt;
-    TextView txtUserinfo, txtOrtherPhaiThanhToanNull,txtOrtherDaThanhToanNull;
+    TextView txtUserinfo, txtOrtherPhaiThanhToanNull, txtOrtherDaThanhToanNull;
     String token;
     User user;
     private HouseRecipt houseRecipts;
-    private ElectricAdapter adapterPayed;
-    private ElectricAdapter adapterNotPay;
-    private GetListReciptPresenter getListReciptPresenter;
+    private ReceiptAdapter adapterPayed;
+    private ReceiptAdapter adapterNotPay;
+   private OrtherActivityPresenter presenter;
 
     @Override
     protected void onStart() {
@@ -39,8 +39,8 @@ public class OrtherActivity extends AppCompatActivity implements GetListReciptVi
         token = intent.getStringExtra("TOKEN");
         user = (User) intent.getSerializableExtra("USERINFO");
 
-        getListReciptPresenter = new GetListReciptPresenter(this);
-        getListReciptPresenter.getList(token, "ORTHER_TYPE");
+        initPresenter();
+        presenter.getListOrtherReceipt(token,"ORTHER_TYPE");
         txtUserinfo.setText(user.getHouse().getHouseName());
     }
 
@@ -55,39 +55,28 @@ public class OrtherActivity extends AppCompatActivity implements GetListReciptVi
         txtUserinfo = findViewById(R.id.txtUserInfoOrther);
         txtOrtherDaThanhToanNull = findViewById(R.id.txtOrtherReceiptsPayedNull);
         txtOrtherPhaiThanhToanNull = findViewById(R.id.txtOrtherReceiptsNotPayNull);
-        onStart();
-
-
 
 
     }
 
-    @Override
-    public void getListReciptSuccess(HouseRecipt houseRecipt) {
 
-        houseRecipts = houseRecipt;
-        showListPayed();
-       showListNotPay();
+    private void initPresenter(){
+        presenter = new OrtherActivityPresenter(this);
     }
 
-    @Override
-    public void getListReciptFail(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-    }
-
-    private  void showListPayed(){
-        adapterPayed = new ElectricAdapter();
+    private void showListPayed() {
+        adapterPayed = new ReceiptAdapter();
         List<ReceiptItem> listPayed = houseRecipts.getListPayedReceipt();
-        if(listPayed.size()==0){
+        if (listPayed.size() == 0) {
             txtOrtherDaThanhToanNull.setVisibility(View.VISIBLE);
             txtOrtherDaThanhToanNull.setText("Bạn không có hóa đơn đã thanh toán");
             lvPayedReceipt.setVisibility(View.GONE);
-        }else{
+        } else {
             adapterPayed.setListReceipt(listPayed);
 
             LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) lvPayedReceipt.getLayoutParams();
-            lp.height = 265* listPayed.size();
-            
+            lp.height = 265 * listPayed.size();
+
             lvPayedReceipt.setLayoutParams(lp);
             lvPayedReceipt.setAdapter(adapterPayed);
             lvPayedReceipt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -105,14 +94,15 @@ public class OrtherActivity extends AppCompatActivity implements GetListReciptVi
             });
         }
     }
-    private void showListNotPay(){
+
+    private void showListNotPay() {
         List<ReceiptItem> listNotPay = houseRecipts.getListNotPayedReceipt();
-        adapterNotPay = new ElectricAdapter();
-        if(listNotPay.size()==0){
+        adapterNotPay = new ReceiptAdapter();
+        if (listNotPay.size() == 0) {
             txtOrtherPhaiThanhToanNull.setVisibility(View.VISIBLE);
             txtOrtherPhaiThanhToanNull.setText("Bạn không có hóa đơn cần phải thanh toán");
             lvNotPayedReceipt.setVisibility(View.GONE);
-        }else{
+        } else {
             adapterNotPay.setListReceipt(listNotPay);
 
             LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) lvNotPayedReceipt.getLayoutParams();
@@ -134,5 +124,19 @@ public class OrtherActivity extends AppCompatActivity implements GetListReciptVi
                 }
             });
         }
+    }
+
+    @Override
+    public void getListOrtherReceiptSuccess(HouseRecipt houseRecipt) {
+
+        houseRecipts = houseRecipt;
+        showListNotPay();
+        showListPayed();
+    }
+
+    @Override
+    public void getListOrtherReceiptFail(String msg) {
+
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

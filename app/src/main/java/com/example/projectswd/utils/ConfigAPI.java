@@ -9,5 +9,6 @@ public class ConfigAPI {
         String GETRECEIPTS ="api/receipts/user/{type}";
         String GETDETAILRECEIPT ="api/receipts";
         String PAYRECEIPT = "api/receipts/{id}/status";
+        String GETPRODUCTS = "api/products";
     }
 }

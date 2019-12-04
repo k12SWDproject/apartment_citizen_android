@@ -12,37 +12,52 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projectswd.R;
-import com.example.projectswd.adapter.ElectricAdapter;
+import com.example.projectswd.adapter.ReceiptAdapter;
+import com.example.projectswd.contract.ElectricActivityContract;
 import com.example.projectswd.model.User;
-import com.example.projectswd.presenters.GetListReciptPresenter;
+import com.example.projectswd.presenters.ElectricActivityPresenter;
 import com.example.projectswd.model.HouseRecipt;
 import com.example.projectswd.model.ReceiptItem;
-import com.example.projectswd.views.GetListReciptView;
 
 import java.util.List;
 
-public class ElectricActivity extends AppCompatActivity implements GetListReciptView {
+public class ElectricActivity extends AppCompatActivity implements ElectricActivityContract.view {
 
     ListView lvNotPayedReceipt, lvPayedReceipt;
     TextView txtUserinfo, txtReceitpsPayedNull, txtReceitpsNotPayNull;
     String token;
     User user;
     private HouseRecipt houseRecipts;
-    private ElectricAdapter adapterPayed;
-    private ElectricAdapter adapterNotPay;
-    private GetListReciptPresenter getListReciptPresenter;
+    private ReceiptAdapter adapterPayed;
+    private ReceiptAdapter adapterNotPay;
+//
+
+    private ElectricActivityPresenter presenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_electric);
+    protected void onStart() {
+        super.onStart();
         Intent intent = getIntent();
         token = intent.getStringExtra("TOKEN");
         user = new User();
         user = (User) intent.getSerializableExtra("USERINFO");
 
-        getListReciptPresenter = new GetListReciptPresenter(this);
-        getListReciptPresenter.getList(token, "ELECTRIC_TYPE");
+//        getListReciptPresenter = new GetListReciptPresenter(this);
+
+//        getListReciptPresenter.getList(token, "ELECTRIC_TYPE");
+        initPresenter();
+        presenter.getListElectricReceipt(token,"ELECTRIC_TYPE");
+
+        txtUserinfo.setText(user.getHouse().getHouseName());
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_electric);
+
+
+
 
 
         lvPayedReceipt = findViewById(R.id.lvElectricReceiptsPayed);
@@ -52,42 +67,32 @@ public class ElectricActivity extends AppCompatActivity implements GetListRecipt
         txtReceitpsPayedNull = findViewById(R.id.txtElectricReceiptPayedNull);
 
 
-        txtUserinfo.setText(user.getHouse().getHouseName());
-        lvPayedReceipt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
-
-        lvNotPayedReceipt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
-
-    }
-
-
-
-    @Override
-    public void getListReciptSuccess(HouseRecipt houseRecipt) {
-        houseRecipts = houseRecipt;
-        showListNotPay();
-        showListPayed();
 
 
 
     }
 
-    @Override
-    public void getListReciptFail(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    private void initPresenter(){
+        presenter = new ElectricActivityPresenter(this);
     }
+
+//    @Override
+//    public void getListReciptSuccess(HouseRecipt houseRecipt) {
+//        houseRecipts = houseRecipt;
+//        showListNotPay();
+//        showListPayed();
+//
+//
+//
+//    }
+//
+//    @Override
+//    public void getListReciptFail(String msg) {
+//        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+//    }
 
     private  void showListPayed(){
-        adapterPayed = new ElectricAdapter();
+        adapterPayed = new ReceiptAdapter();
         List<ReceiptItem> listPayed = houseRecipts.getListPayedReceipt();
         if(listPayed.size()==0){
             txtReceitpsPayedNull.setVisibility(View.VISIBLE);
@@ -117,7 +122,7 @@ public class ElectricActivity extends AppCompatActivity implements GetListRecipt
     }
     private void showListNotPay(){
         List<ReceiptItem> listNotPay = houseRecipts.getListNotPayedReceipt();
-        adapterNotPay = new ElectricAdapter();
+        adapterNotPay = new ReceiptAdapter();
         if(listNotPay.size()==0){
             txtReceitpsNotPayNull.setVisibility(View.VISIBLE);
             txtReceitpsNotPayNull.setText("Bạn không có hóa đơn cần phải thanh toán");
@@ -144,5 +149,18 @@ public class ElectricActivity extends AppCompatActivity implements GetListRecipt
                 }
             });
         }
+    }
+
+    @Override
+    public void getListElectricReceiptSuccess(HouseRecipt houseRecipt) {
+        houseRecipts = houseRecipt;
+        showListPayed();
+        showListNotPay();
+
+    }
+
+    @Override
+    public void getListElectricReceiptFail(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

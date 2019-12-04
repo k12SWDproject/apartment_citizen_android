@@ -10,12 +10,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activities.DetailPayedActivity"></activity>
+        android:theme="@style/Theme.Design.Light.NoActionBar">
+        <activity android:name=".activities.CartActivity"></activity>
+        <activity android:name=".activities.ServiceActivity" />
+        <activity android:name=".activities.DetailPayedActivity" />
         <activity android:name=".activities.DetailActivity" />
         <activity android:name=".activities.OrtherActivity" />
         <activity android:name=".activities.WifiActivity" />
         <activity android:name=".activities.WaterActivity" />
+        <activity android:name=".activities.ProfileActivity" />
         <activity android:name=".activities.ElectricActivity" />
         <activity android:name=".activities.LoginActivity">
             <intent-filter>

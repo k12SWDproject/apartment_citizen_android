@@ -5,12 +5,16 @@ public class FilterObj {
 
     private int id;
 
+    private String name;
+
     public FilterObj() {
     }
 
     public FilterObj(int id) {
         this.id = id;
     }
+
+
 
     public int getId() {
         return id;

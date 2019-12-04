@@ -12,13 +12,13 @@ import com.example.projectswd.model.ReceiptItem;
 
 import java.util.List;
 
-public class ElectricAdapter extends BaseAdapter {
+public class ReceiptAdapter extends BaseAdapter {
     private List<ReceiptItem> listReceipt;
     TextView txtSoNha;
-    public ElectricAdapter() {
+    public ReceiptAdapter() {
     }
 
-    public ElectricAdapter(List<ReceiptItem> listReceipt) {
+    public ReceiptAdapter(List<ReceiptItem> listReceipt) {
         this.listReceipt = listReceipt;
     }
 

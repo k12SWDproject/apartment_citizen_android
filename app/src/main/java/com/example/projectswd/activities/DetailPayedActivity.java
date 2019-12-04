@@ -11,20 +11,16 @@ import com.example.projectswd.R;
 import com.example.projectswd.model.FilterObj;
 import com.example.projectswd.model.ReceiptDTO;
 import com.example.projectswd.model.User;
-import com.example.projectswd.presenters.DetailReceiptPresenter;
-import com.example.projectswd.presenters.ReceiptPayPresenter;
-import com.example.projectswd.views.DetailReceiptView;
+//import com.example.projectswd.presenters.DetailReceiptPresenter;
 
-import java.io.Serializable;
-
-public class DetailPayedActivity extends AppCompatActivity implements DetailReceiptView {
+public class DetailPayedActivity extends AppCompatActivity  {
 
     private String token, id;
 
     private User user;
 
     TextView txtIdRecipt, txtFullname,txtDateOfReceipt, txtNameOfQuantity, txtQuantity, txtMoney, txtUserInfo, txtNameReceipt;
-    private DetailReceiptPresenter detailReceiptPresenter;
+//    private DetailReceiptPresenter detailReceiptPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,27 +42,27 @@ public class DetailPayedActivity extends AppCompatActivity implements DetailRece
         txtNameReceipt = findViewById(R.id.txtNameReceiptPayed);
 
 
-        detailReceiptPresenter = new DetailReceiptPresenter(this);
+//        detailReceiptPresenter = new DetailReceiptPresenter(this);
 
         FilterObj filterObj = new FilterObj();
         filterObj.setId(Integer.parseInt(id));
-        detailReceiptPresenter.getDetailReceipt(token,filterObj);
+//        detailReceiptPresenter.getDetailReceipt(token,filterObj);
     }
 
-    @Override
-    public void success(ReceiptDTO receipt) {
-        txtIdRecipt.setText(receipt.getReceipt().getId()+"");
-        txtMoney.setText(receipt.getReceiptDetailList().get(0).getTotal()+"");
-        txtFullname.setText(user.getFullName());
-        txtDateOfReceipt.setText(receipt.getReceipt().getPaymentDate()+"");
-        txtQuantity.setText(receipt.getReceiptDetailList().get(0).getQuantity()+"");
-        txtNameOfQuantity.setText("Điện năng tiêu thụ");
-        txtNameReceipt.setText(receipt.getReceipt().getTitle());
-        txtUserInfo.setText(user.getHouse().getHouseName());
-    }
-
-    @Override
-    public void fail(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-    }
+//    @Override
+//    public void success(ReceiptDTO receipt) {
+//        txtIdRecipt.setText(receipt.getReceipt().getId()+"");
+//        txtMoney.setText(receipt.getReceiptDetailList().get(0).getTotal()+"");
+//        txtFullname.setText(user.getFullName());
+//        txtDateOfReceipt.setText(receipt.getReceipt().getPaymentDate()+"");
+//        txtQuantity.setText(receipt.getReceiptDetailList().get(0).getQuantity()+"");
+//        txtNameOfQuantity.setText("Điện năng tiêu thụ");
+//        txtNameReceipt.setText(receipt.getReceipt().getTitle());
+//        txtUserInfo.setText(user.getHouse().getHouseName());
+//    }
+//
+//    @Override
+//    public void fail(String msg) {
+//        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+//    }
 }

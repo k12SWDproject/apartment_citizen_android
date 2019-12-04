@@ -8,18 +8,24 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.projectswd.R;
+import com.example.projectswd.contract.MainActivityContract;
 import com.example.projectswd.model.House;
 import com.example.projectswd.model.User;
+//import com.example.projectswd.presenters.DetailReceiptPresenter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
     private User user;
      private House house;
      private String token;
     TextView txtMoney;
+
+//    private DetailReceiptPresenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        initPresenter();
 
         txtMoney = findViewById(R.id.txtMoneyOfUser);
         TextView txtInfo = findViewById(R.id.txtInfo);
@@ -38,34 +44,27 @@ public class MainActivity extends AppCompatActivity {
 
         txtInfo.setText(user.getId() +" - "+house.getHouseName());
 
+         TextView txtName = findViewById(R.id.txtNameOwner);
+         txtName.setText(user.getUsername());
+         TextView txtApID = findViewById(R.id.txtAparmentID);
+         txtApID.setText(house.getHouseName());
+         txtInfo.setText(user.getId() +" - "+house.getHouseName());
+
+//         presenter.login();
     }
 
-    public void clickToElectric(View view) {
-        Intent  intent = new Intent(getApplicationContext(), ElectricActivity.class);
-        intent.putExtra("TOKEN", token);
-        intent.putExtra("USERINFO",user);
-        startActivity(intent);
-    }
+//    private void initPresenter(){
+//        presenter = new DetailReceiptPresenter(this);
+//    }
 
 
-    public void clickToWater(View view) {
-        Intent  intent = new Intent(getApplicationContext(), WaterActivity.class);
-        intent.putExtra("TOKEN", token);
-        intent.putExtra("USERINFO",user);
-        startActivity(intent);
-    }
-
-    public void clickToWifi(View view) {
-        Intent  intent = new Intent(getApplicationContext(), WifiActivity.class);
-        intent.putExtra("TOKEN", token);
-        intent.putExtra("USERINFO",user);
-        startActivity(intent);
-    }
-
-    public void clickToPhiChungCu(View view) {
-        Intent  intent = new Intent(getApplicationContext(), OrtherActivity.class);
-        intent.putExtra("TOKEN", token);
-        intent.putExtra("USERINFO",user);
-        startActivity(intent);
-    }
+//    @Override
+//    public void success(String abc) {
+//
+//    }
+//
+//    @Override
+//    public void failure(String message) {
+//
+//    }
 }

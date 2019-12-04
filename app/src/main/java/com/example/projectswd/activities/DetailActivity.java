@@ -9,26 +9,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projectswd.R;
+import com.example.projectswd.contract.DetailActivityContract;
 import com.example.projectswd.model.FilterObj;
-import com.example.projectswd.model.HouseRecipt;
-import com.example.projectswd.model.Receipt;
 import com.example.projectswd.model.ReceiptDTO;
-import com.example.projectswd.model.ReceiptItem;
 import com.example.projectswd.model.User;
-import com.example.projectswd.presenters.DetailReceiptPresenter;
-import com.example.projectswd.presenters.ReceiptPayPresenter;
-import com.example.projectswd.views.DetailReceiptView;
-import com.example.projectswd.views.ReceiptPayView;
+import com.example.projectswd.presenters.DetailActivityPresenter;
 
-public class DetailActivity extends AppCompatActivity implements DetailReceiptView, ReceiptPayView {
+public class DetailActivity extends AppCompatActivity implements DetailActivityContract.view {
 
     private String token, id, nameQuantity;
 
     private User user;
 
     TextView txtIdRecipt, txtFullname,txtDateOfReceipt, txtNameOfQuantity, txtQuantity, txtMoney, txtUserInfo, txtNameReceipt;
-    private DetailReceiptPresenter detailReceiptPresenter;
-    private ReceiptPayPresenter receiptPayPresenter;
+//    private DetailReceiptPresenter detailReceiptPresenter;
+    private DetailActivityPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,19 +45,32 @@ public class DetailActivity extends AppCompatActivity implements DetailReceiptVi
         txtNameReceipt = findViewById(R.id.txtNameReceipt);
 
 
-        detailReceiptPresenter = new DetailReceiptPresenter(this);
+        initPresenter();
 
         FilterObj filterObj = new FilterObj();
         filterObj.setId(Integer.parseInt(id));
-        detailReceiptPresenter.getDetailReceipt(token,filterObj);
+        presenter.showDetail(token,filterObj);
 
 
 
     }
+    private void initPresenter(){
+        presenter = new DetailActivityPresenter(this);
+    }
 
+
+
+
+
+    public void clickToPay(View view) {
+//
+        initPresenter();
+        presenter.payReceipt(token,Integer.parseInt(id));
+
+    }
 
     @Override
-    public void success(ReceiptDTO receipt) {
+    public void showDetailSuccess(ReceiptDTO receipt) {
         txtIdRecipt.setText(receipt.getReceipt().getId()+"");
         txtMoney.setText(receipt.getReceiptDetailList().get(0).getTotal()+"");
         txtFullname.setText(user.getFullName());
@@ -71,26 +79,22 @@ public class DetailActivity extends AppCompatActivity implements DetailReceiptVi
         txtNameOfQuantity.setText(nameQuantity);
         txtNameReceipt.setText(receipt.getReceipt().getTitle());
         txtUserInfo.setText(user.getHouse().getHouseName());
-
     }
 
     @Override
-    public void success(String string) {
-        onBackPressed();
-    }
-
-    @Override
-    public void fail(String msg) {
+    public void showDetailFail(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 
     }
 
+    @Override
+    public void payReceiptSuccess(String string) {
+        Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
+        onBackPressed();
+    }
 
-
-    public void clickToPay(View view) {
-        receiptPayPresenter = new ReceiptPayPresenter(this);
-        receiptPayPresenter.payReceipt(token, Integer.parseInt(id));
-
-
+    @Override
+    public void payReceiptFail(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

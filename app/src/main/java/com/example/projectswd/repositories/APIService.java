@@ -4,11 +4,14 @@ package com.example.projectswd.repositories;
 
 import com.example.projectswd.model.FilterObj;
 import com.example.projectswd.model.HouseRecipt;
+import com.example.projectswd.model.Product;
 import com.example.projectswd.model.Receipt;
 import com.example.projectswd.model.ReceiptDTO;
 import com.example.projectswd.model.User;
 import com.example.projectswd.utils.ConfigAPI;
 import com.google.gson.Gson;
+
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -46,4 +49,8 @@ public interface APIService {
     @PUT(ConfigAPI.Api.PAYRECEIPT)
     @Headers("Content-Type:application/json")
     Call<ResponseBody> payReceipt(@Header("Authorization") String token, @Path("id") int id);
+
+    @GET(ConfigAPI.Api.GETPRODUCTS)
+    @Headers("Content-Type:application/json")
+    Call<List<Product>> getListProduct(@Header("Authorization") String token, @Query("filter") String json);
 }

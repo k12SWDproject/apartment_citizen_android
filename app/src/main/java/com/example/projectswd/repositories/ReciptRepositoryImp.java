@@ -2,11 +2,14 @@ package com.example.projectswd.repositories;
 
 import com.example.projectswd.model.FilterObj;
 import com.example.projectswd.model.HouseRecipt;
+import com.example.projectswd.model.Product;
 import com.example.projectswd.model.Receipt;
 import com.example.projectswd.model.ReceiptDTO;
 import com.example.projectswd.utils.CallBackData;
 import com.example.projectswd.utils.ClientApi;
 import com.google.gson.Gson;
+
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -70,7 +73,7 @@ public class ReciptRepositoryImp implements ReciptRepository {
                         }
 
                     } else {
-                        callBackData.fail("Bcccccccccc");
+                        callBackData.fail("Failed");
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -110,28 +113,8 @@ public class ReciptRepositoryImp implements ReciptRepository {
 
             }
         });
-//        call.enqueue(new Callback() {
-//            @Override
-//            public void onResponse(Call call, Response response) {
-//                try {
-//                    if (response.code() == 200) {
-//
-//
-//                            callBackData.success(ResponseBody);
-//
-//
-//                    } else {
-//                        callBackData.fail("Bcccccccccc");
-//                    }
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call call, Throwable t) {
-//
-//            }
-//        });
+
     }
+
+
 }
