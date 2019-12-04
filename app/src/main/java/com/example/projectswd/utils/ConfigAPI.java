@@ -10,5 +10,6 @@ public class ConfigAPI {
         String GETDETAILRECEIPT ="api/receipts";
         String PAYRECEIPT = "api/receipts/{id}/status";
         String GETPRODUCTS = "api/products";
+        String GETMEMBERS ="api/users";
     }
 }
