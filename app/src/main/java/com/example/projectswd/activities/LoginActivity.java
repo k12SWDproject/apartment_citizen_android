@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.projectswd.R;
+import com.example.projectswd.fragments.HomeFragment;
 import com.example.projectswd.repositories.APIService;
 import com.example.projectswd.model.User;
 
@@ -84,21 +85,22 @@ public class LoginActivity extends AppCompatActivity {
         if(response.isSuccessful()){
                         User user = new User();
                         user = response.body();
-                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+
+                     Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
                      intent.putExtra("USERINFO", user);
                      intent.putExtra("TOKEN", token);
                      startActivity(intent);
-                        return;
+                     return;
 
                 }
-                Toast.makeText(LoginActivity.this, "Failed ----", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                 return;
             }
 
 
     @Override
     public void onFailure(Call<User> call, Throwable t) {
-        Toast.makeText(LoginActivity.this, "LLLLLLLLLLLLLL", Toast.LENGTH_SHORT).show();
+        Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
     }
 });
 

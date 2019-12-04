@@ -26,6 +26,32 @@ public class User implements Serializable {
     private Date lastModified;
     private Integer status;
     private BigDecimal money;
+public User(){
+
+}
+
+    public User(String idNumber, String fullName) {
+        this.idNumber = idNumber;
+        this.fullName = fullName;
+    }
+
+    public User(int id, String username, String password, Role role, House house, Integer creator, String profileImage, Date dateOfBirth, String idNumber, Integer gender, String fullName, Date createDate, Date lastModified, Integer status, BigDecimal money) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.house = house;
+        this.creator = creator;
+        this.profileImage = profileImage;
+        this.dateOfBirth = dateOfBirth;
+        this.idNumber = idNumber;
+        this.gender = gender;
+        this.fullName = fullName;
+        this.createDate = createDate;
+        this.lastModified = lastModified;
+        this.status = status;
+        this.money = money;
+    }
 
     public int getId() {
         return id;

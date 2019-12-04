@@ -1,8 +1,19 @@
 package com.example.projectswd.repositories;
 
+import com.example.projectswd.model.FilterObj;
 import com.example.projectswd.model.HouseRecipt;
+import com.example.projectswd.model.Product;
+import com.example.projectswd.model.Receipt;
+import com.example.projectswd.model.ReceiptDTO;
+import com.example.projectswd.model.User;
 import com.example.projectswd.utils.CallBackData;
 import com.example.projectswd.utils.ClientApi;
+import com.google.gson.Gson;
+
+import java.util.List;
+
+import okhttp3.ResponseBody;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,4 +55,74 @@ public class ReciptRepositoryImp implements ReciptRepository {
         });
 
     }
+
+    @Override
+    public void getDetailReceipt(String token, FilterObj filterObj,final CallBackData<ReceiptDTO> callBackData) {
+
+        Gson gson = new Gson();
+        String json = gson.toJson(filterObj);
+
+        ClientApi clientApi = new ClientApi();
+        Call<ReceiptDTO> call = clientApi.APIService().getDetailRecipt( token, json);
+        call.enqueue(new Callback<ReceiptDTO>() {
+            @Override
+            public void onResponse(Call<ReceiptDTO> call, Response<ReceiptDTO> response) {
+                try {
+                    if (response.code() == 200) {
+
+                        ReceiptDTO receipt = response.body();
+                        if (receipt != null) {
+                            callBackData.success(receipt);
+                        }
+
+                    } else {
+                        callBackData.fail("Failed");
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ReceiptDTO> call, Throwable t) {
+
+            }
+        });
+//
+
+    }
+
+    @Override
+    public void payReceipta(String token, int id, final CallBackData<ResponseBody> callBackData) {
+        ClientApi clientApi = new ClientApi();
+        Call<ResponseBody> call = clientApi.APIService().payReceipt(token, id);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    if(response.code() ==200){
+                        callBackData.success(response.body());
+                    }else{
+                        callBackData.fail("Failed !!");
+                    }
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    @Override
+    public void getListMember(String token, int id, CallBackData<List<User>> callBackData) {
+
+    }
+
+
 }

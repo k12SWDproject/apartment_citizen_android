@@ -3,12 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.projectswd.activities.MenuActivity">
-    <RelativeLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:orientation="vertical"
         android:background="@drawable/wallpaper1"
         tools:ignore="MissingConstraints">
 
@@ -17,9 +20,10 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"
+
+            android:layout_gravity="center"
             android:src="@drawable/profile"
-            android:onClick="clickToProfile"/>
+           />
         <TextView
             android:id="@+id/txtNameOwner"
             android:layout_width="match_parent"
@@ -38,14 +42,15 @@
             android:gravity="center"/>
 
 
-    </RelativeLayout>
+
+    </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/fragment_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_marginTop="150dp"
+        android:id="@+id/fragment_content"
 
-        />
+        android:layout_height="match_parent"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
@@ -54,6 +59,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:visibility="visible"
+
         android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

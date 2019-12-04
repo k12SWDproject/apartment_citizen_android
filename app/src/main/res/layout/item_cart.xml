@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/gas"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="sdsda"
+                android:gravity="center"
+                android:id="@+id/txtNameProduct"
+                android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="5"
+                    android:layout_gravity="center"
+
+                    android:layout_height="wrap_content">
+                    <Button
+
+                        android:layout_marginLeft="40dp"
+
+                        android:layout_width="30dp"
+                        android:text="-"
+                        android:id="@+id/btnSub"
+                        android:padding="5dp"
+                        android:layout_height="30dp"
+                        />
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtQuantityOfCart"
+                        android:gravity="center"
+
+                        android:layout_weight="3"
+                        />
+                    <Button
+                        android:layout_width="30dp"
+                        android:id="@+id/btnAdd"
+                        android:text="+"
+                        android:padding="5dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="40dp"
+                        />
+                    <ImageButton
+                        android:layout_width="30dp"
+                        android:id="@+id/btnRemove"
+                        android:background="@drawable/light"
+                        android:padding="5dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="40dp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="2"
+                android:text="2000000"
+                android:id="@+id/txtPriceProduct"
+                android:gravity="center"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
