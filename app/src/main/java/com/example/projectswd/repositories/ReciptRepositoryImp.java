@@ -5,6 +5,7 @@ import com.example.projectswd.model.HouseRecipt;
 import com.example.projectswd.model.Product;
 import com.example.projectswd.model.Receipt;
 import com.example.projectswd.model.ReceiptDTO;
+import com.example.projectswd.model.User;
 import com.example.projectswd.utils.CallBackData;
 import com.example.projectswd.utils.ClientApi;
 import com.google.gson.Gson;
@@ -12,6 +13,8 @@ import com.google.gson.Gson;
 import java.util.List;
 
 import okhttp3.ResponseBody;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -113,6 +116,11 @@ public class ReciptRepositoryImp implements ReciptRepository {
 
             }
         });
+
+    }
+
+    @Override
+    public void getListMember(String token, int id, CallBackData<List<User>> callBackData) {
 
     }
 

@@ -50,6 +50,10 @@ public interface APIService {
     @Headers("Content-Type:application/json")
     Call<ResponseBody> payReceipt(@Header("Authorization") String token, @Path("id") int id);
 
+    @GET(ConfigAPI.Api.GETMEMBERS)
+    @Headers("Content-Type:application/json")
+    Call<List<User>> getMembers (@Header("Authorization")  String token, @Query("filter") String filter );
+
     @GET(ConfigAPI.Api.GETPRODUCTS)
     @Headers("Content-Type:application/json")
     Call<List<Product>> getListProduct(@Header("Authorization") String token, @Query("filter") String json);

@@ -18,16 +18,17 @@ import java.text.SimpleDateFormat;
 public class ProfileActivity extends AppCompatActivity {
     EditText edtFullname, setGender, edtEmail, edtPhoneNo, edtBirthdate;
     TextView titleName,ApartTitleNo;
-    Button edtBtn, updateBtn;
+    Button edtBtn, updateBtn, btnManage;
     House house;
-
+    String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         User user = (User) intent.getSerializableExtra("USERINFO");
+        token = intent.getStringExtra("TOKEN");
         house = user.getHouse();
 
         edtFullname = findViewById(R.id.edtFullname);
@@ -39,6 +40,18 @@ public class ProfileActivity extends AppCompatActivity {
         ApartTitleNo = findViewById(R.id.numberApartment);
         edtBtn = findViewById(R.id.editButton);
         updateBtn = findViewById(R.id.updateButton);
+        btnManage = findViewById(R.id.btnManage);
+
+        btnManage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(),ManageMembersActivity.class);
+                intent1.putExtra("TOKEN",token);
+                startActivity(intent1);
+
+
+            }
+        });
 
 
 
@@ -57,6 +70,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void clickToEdit(View view) {
         edtFullname.setEnabled(true);
+        edtFullname.isFocusable();
         edtEmail.setEnabled(true);
         edtBirthdate.setEnabled(true);
         edtPhoneNo.setEnabled(true);

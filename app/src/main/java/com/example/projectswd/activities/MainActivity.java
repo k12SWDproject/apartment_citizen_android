@@ -11,7 +11,6 @@ import com.example.projectswd.R;
 import com.example.projectswd.contract.MainActivityContract;
 import com.example.projectswd.model.House;
 import com.example.projectswd.model.User;
-//import com.example.projectswd.presenters.DetailReceiptPresenter;
 
 public class MainActivity extends AppCompatActivity  {
     private User user;
@@ -25,9 +24,7 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        initPresenter();
 
-        txtMoney = findViewById(R.id.txtMoneyOfUser);
         TextView txtInfo = findViewById(R.id.txtInfo);
 
         Intent intent = getIntent();
@@ -36,12 +33,6 @@ public class MainActivity extends AppCompatActivity  {
          house = user.getHouse();
 
 
-         if(user.getMoney()==null){
-             txtMoney.setText("0 VND");
-         }else{
-             txtMoney.setText(user.getMoney()+"VND");
-         }
-
         txtInfo.setText(user.getId() +" - "+house.getHouseName());
 
          TextView txtName = findViewById(R.id.txtNameOwner);
@@ -49,22 +40,33 @@ public class MainActivity extends AppCompatActivity  {
          TextView txtApID = findViewById(R.id.txtAparmentID);
          txtApID.setText(house.getHouseName());
          txtInfo.setText(user.getId() +" - "+house.getHouseName());
-
-//         presenter.login();
     }
 
-//    private void initPresenter(){
-//        presenter = new DetailReceiptPresenter(this);
-//    }
+    public void clickToElectric(View view) {
+        Intent  intent = new Intent(getApplicationContext(), ElectricActivity.class);
+        intent.putExtra("TOKEN", token);
+        intent.putExtra("USERINFO",user);
+        startActivity(intent);
+    }
 
 
-//    @Override
-//    public void success(String abc) {
-//
-//    }
-//
-//    @Override
-//    public void failure(String message) {
-//
-//    }
+    public void clickToWater(View view) {
+        Intent  intent = new Intent(getApplicationContext(), WaterActivity.class);
+        intent.putExtra("TOKEN", token);
+        intent.putExtra("USERINFO",user);
+        startActivity(intent);
+    }
+
+    public void clickToProfile(View view) {
+        Intent  intent = new Intent(getApplicationContext(), ProfileActivity.class);
+        intent.putExtra("TOKEN", token);
+        intent.putExtra("USERINFO",user);
+        startActivity(intent);
+    }
+    public void clickToMemberManage() {
+        Intent  intent = new Intent(getApplicationContext(), ManageMembersActivity.class);
+        intent.putExtra("TOKEN", token);
+        intent.putExtra("USERINFO",user);
+        startActivity(intent);
+    }
 }
