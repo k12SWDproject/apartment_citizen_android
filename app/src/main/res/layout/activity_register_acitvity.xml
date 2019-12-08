@@ -47,7 +47,7 @@
         android:layout_below="@id/textViewLogo"
         android:gravity="center"
         android:textStyle="italic"
-        android:textColor="#000000"
+        android:textColor="#254699"
         />
 
 

@@ -21,16 +21,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
-                android:background="@drawable/wallpaper"
-                android:layout_height="wrap_content">
-
+                android:layout_height="200dp"
+                android:background="@drawable/dien"
+                android:paddingTop="80dp">
                 <TextView
                     android:id="@+id/txtInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/wallpaper"
-
                     android:gravity="center"
                     android:text="Hóa Đơn Tiền Điện"
                     android:textColor="#ffff"
@@ -40,10 +37,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/txtUserInfoElect"
-
+                    android:text="tét"
+                    android:textColor="#FFFFFF"
                     android:gravity="center"
                     android:textSize="20dp"
                     />
+
+
+
             </LinearLayout>
 
             <LinearLayout
@@ -56,9 +57,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Hóa đơn tiền điện phải thanh toán"
-                    android:textColor="#000"
+                    android:textColor="#FFFFFF"
                     android:textSize="20dp"
                     android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="#000"
 
                     />
 
@@ -96,9 +99,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Hóa đơn tiền điện đã thanh toán"
-                    android:textColor="#000"
+                    android:textColor="#FFFFFF"
                     android:textSize="20dp"
                     android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="#000"
 
                     />
 

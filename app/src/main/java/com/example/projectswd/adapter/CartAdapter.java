@@ -54,7 +54,7 @@ public class CartAdapter extends BaseAdapter {
         final TextView txtQuantity = convertView.findViewById(R.id.txtQuantityOfCart);
         Button btnAdd = convertView.findViewById(R.id.btnAdd);
         Button btnSub = convertView.findViewById(R.id.btnSub);
-        ImageButton btnRemove = convertView.findViewById(R.id.btnRemove);
+        Button btnRemove = convertView.findViewById(R.id.btnRemove);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +63,7 @@ public class CartAdapter extends BaseAdapter {
                 int quantity = Integer.parseInt(quan) +1;
                 txtQuantity.setText(quantity+"");
                 MenuActivity.productList.get(position).setQuantityOfCart(quantity);
-                txtPrice.setText(product.getPrice().multiply(new BigInteger(quantity+"")).toString());
+                txtPrice.setText(product.getPrice().multiply(new BigInteger(quantity+"")).toString() + " VNĐ");
                 notifyDataSetChanged();
             }
         });
@@ -77,7 +77,7 @@ public class CartAdapter extends BaseAdapter {
                 }
                 txtQuantity.setText(quantity+"");
                 MenuActivity.productList.get(position).setQuantityOfCart(quantity);
-                txtPrice.setText(product.getPrice().multiply(new BigInteger(quantity+"")).toString());
+                txtPrice.setText(product.getPrice().multiply(new BigInteger(quantity+"")).toString()+ " VNĐ");
                 notifyDataSetChanged();
             }
         });
@@ -92,7 +92,7 @@ public class CartAdapter extends BaseAdapter {
 
         txtNameProduct.setText(product.getName());
 
-        txtPrice.setText(  MenuActivity.productList.get(position).getPrice().multiply(new BigInteger(MenuActivity.productList.get(position).getQuantityOfCart()+"")).toString());
+        txtPrice.setText(  MenuActivity.productList.get(position).getPrice().multiply(new BigInteger(MenuActivity.productList.get(position).getQuantityOfCart()+"")).toString() + " VNĐ");
         txtQuantity.setText(MenuActivity.productList.get(position).getQuantityOfCart()+"");
         return convertView;
     }

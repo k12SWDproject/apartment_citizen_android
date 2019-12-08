@@ -20,29 +20,31 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:background="@drawable/wallpaper"
-                android:layout_height="wrap_content">
+                android:layout_height="200dp"
+                android:background="@drawable/dien"
+
+                android:orientation="vertical">
 
                 <TextView
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="80dp"
 
-
+                    android:textColor="#FFFFFF"
                     android:gravity="center"
                     android:text="Hóa Đơn Tiền Wifi"
                     android:textSize="30dp"
                     android:textStyle="bold" />
+
                 <TextView
+                    android:id="@+id/txtUserInfoWifi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/txtUserInfoWifi"
+                    android:textColor="#FFFFFF"
 
                     android:gravity="center"
-                    android:textSize="20dp"
-                    />
+                    android:textSize="20dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -55,9 +57,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Hóa đơn tiền Wifi phải thanh toán"
-                    android:textColor="#000"
+                    android:textColor="#FFFFFF"
                     android:textSize="20dp"
                     android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="#000"
 
                     />
 
@@ -95,9 +99,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Hóa đơn tiền Wifi đã thanh toán"
-                    android:textColor="#000"
+                    android:textColor="#FFFFFF"
                     android:textSize="20dp"
                     android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="#000"
 
                     />
 

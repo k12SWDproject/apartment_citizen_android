@@ -1,52 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-
-    android:background="#E0DFDF"
-    android:elevation="2dp"
-
-
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="15dp">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="8"
-        android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Hóa đơn điện tháng 10"
-        android:textStyle="bold"
-        android:textColor="#000"
-        android:id="@+id/txtTenHoaDon"
-        android:textSize="20sp"
-        />
-
-        <TextView
-            android:layout_width="match_parent"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            >
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:text="Hóa đơn điện tháng 10"
+            android:gravity="left"
+            android:textColor="#000"
             android:textSize="20dp"
-            android:textStyle="bold"
-
-            android:id="@+id/txtThanhGia"
+            android:id="@+id/txtTenHoaDon"
             />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="2"
-        android:gravity="right">
-            <ImageView
-                android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                android:background="@drawable/button_thanh_toan"
-                android:id="@+id/btnThanhToan"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/txtThanhGia"
+                android:layout_margin="10dp"
+                android:text="Tổng giá"
+                android:textColor="#F33131"
+                android:gravity="center"
                 />
+
         </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:background="@drawable/btn_da_thanh_toan"
+            android:layout_margin="10dp"
+            android:text="Thanh toán"
+            android:textColor="#FFF"
+            android:id="@+id/btnThanhToan"
+
+            />
+
+
+
+
     </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
 </LinearLayout>
