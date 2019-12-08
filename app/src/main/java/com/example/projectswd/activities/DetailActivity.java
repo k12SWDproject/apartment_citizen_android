@@ -15,6 +15,8 @@ import com.example.projectswd.model.ReceiptDTO;
 import com.example.projectswd.model.User;
 import com.example.projectswd.presenters.DetailActivityPresenter;
 
+import java.text.SimpleDateFormat;
+
 public class DetailActivity extends AppCompatActivity implements DetailActivityContract.view {
 
     private String token, id, nameQuantity;
@@ -34,7 +36,7 @@ public class DetailActivity extends AppCompatActivity implements DetailActivityC
         token = intent.getStringExtra("TOKEN");
         user =(User) intent.getSerializableExtra("USERINFO");
         nameQuantity = intent.getStringExtra("NAMEQUANTITY");
-
+        nameQuantity.toUpperCase();
         txtIdRecipt = findViewById(R.id.txtIdReceipt);
         txtFullname = findViewById(R.id.txtFullname);
         txtDateOfReceipt = findViewById(R.id.txtDateOfReceipt);
@@ -74,9 +76,11 @@ public class DetailActivity extends AppCompatActivity implements DetailActivityC
         txtIdRecipt.setText(receipt.getReceipt().getId()+"");
         txtMoney.setText(receipt.getReceiptDetailList().get(0).getTotal()+"");
         txtFullname.setText(user.getFullName());
-        txtDateOfReceipt.setText(receipt.getReceipt().getPublishDate()+"");
+        SimpleDateFormat sf = new SimpleDateFormat("dd/MM/yyyy");
+        String date = sf.format(receipt.getReceipt().getPublishDate());
+        txtDateOfReceipt.setText(date);
         txtQuantity.setText(receipt.getReceiptDetailList().get(0).getQuantity()+"");
-        txtNameOfQuantity.setText(nameQuantity);
+        txtNameOfQuantity.setText(nameQuantity.toUpperCase());
         txtNameReceipt.setText(receipt.getReceipt().getTitle());
         txtUserInfo.setText(user.getHouse().getHouseName());
     }

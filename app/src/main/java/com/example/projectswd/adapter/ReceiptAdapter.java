@@ -1,9 +1,11 @@
 package com.example.projectswd.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -65,6 +67,7 @@ public class ReceiptAdapter extends BaseAdapter {
             imageView.setBackgroundResource(R.drawable.button_thanh_toan);
         }else {
             imageView.setBackgroundResource(R.drawable.btn_da_thanh_toan);
+
         }
 
 
