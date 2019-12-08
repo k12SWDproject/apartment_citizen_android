@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
         if(user.getMoney()==null){
             txtMoney.setText("0 VND");
         }else{
-            txtMoney.setText(user.getMoney()+"VND");
+            txtMoney.setText(user.getMoney()+" VNĐ");
         }
 
 
