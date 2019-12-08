@@ -49,7 +49,7 @@ public class CartActivity extends AppCompatActivity implements CartActivityContr
         for (int i = 0; i<MenuActivity.productList.size();i++){
            sum = sum.add(MenuActivity.productList.get(i).getPrice().multiply(new BigInteger(MenuActivity.productList.get(i).getQuantityOfCart()+"")));
         }
-        txtTotal.setText("Tổng tiền:"+sum.toString());
+        txtTotal.setText("Tổng tiền:"+sum.toString()+ " VNĐ");
         lvProduct.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
             @Override
             public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
@@ -57,7 +57,7 @@ public class CartActivity extends AppCompatActivity implements CartActivityContr
                 for (int i = 0; i<MenuActivity.productList.size();i++){
                     sumtotal = sumtotal.add(MenuActivity.productList.get(i).getPrice().multiply(new BigInteger(MenuActivity.productList.get(i).getQuantityOfCart()+"")));
                 }
-                txtTotal.setText("Tổng tiền:"+sumtotal.toString());
+                txtTotal.setText("Tổng tiền:"+sumtotal.toString()+ " VNĐ");
             }
         });
 

@@ -13,10 +13,7 @@
             android:padding="10dp">
             <solid android:color="#CF2525"/>
             <corners
-                android:bottomRightRadius="10dp"
-                android:bottomLeftRadius="10dp"
-                android:topLeftRadius="10dp"
-                android:topRightRadius="10dp"/>
+               android:radius="5dp"/>
         </shape>
     </item>
 </selector>

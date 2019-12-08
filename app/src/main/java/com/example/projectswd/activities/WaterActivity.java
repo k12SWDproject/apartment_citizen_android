@@ -84,7 +84,7 @@ public class WaterActivity extends AppCompatActivity implements WaterActivityCon
             adapterPayed.setListReceipt(listPayed);
 
             LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) lvPayedReceipt.getLayoutParams();
-            lp.height = 300* listPayed.size();
+            lp.height = 500* listPayed.size();
             lvPayedReceipt.setLayoutParams(lp);
             lvPayedReceipt.setAdapter(adapterPayed);
             lvPayedReceipt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -116,7 +116,7 @@ public class WaterActivity extends AppCompatActivity implements WaterActivityCon
             adapterNotPay.setListReceipt(listNotPay);
 
             LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) lvNotPayedReceipt.getLayoutParams();
-            lp.height = 300 * listNotPay.size();
+            lp.height = 500 * listNotPay.size();
 
             lvNotPayedReceipt.setLayoutParams(lp);
 

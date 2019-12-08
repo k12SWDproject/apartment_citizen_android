@@ -102,7 +102,7 @@ public class ElectricActivity extends AppCompatActivity implements ElectricActiv
             adapterPayed.setListReceipt(listPayed);
 
             LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) lvPayedReceipt.getLayoutParams();
-            lp.height = 257* listPayed.size();
+            lp.height = 500* listPayed.size();
             lvPayedReceipt.setLayoutParams(lp);
             lvPayedReceipt.setAdapter(adapterPayed);
             lvPayedReceipt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -131,7 +131,7 @@ public class ElectricActivity extends AppCompatActivity implements ElectricActiv
             adapterNotPay.setListReceipt(listNotPay);
 
             LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) lvNotPayedReceipt.getLayoutParams();
-            lp.height = 257 * listNotPay.size();
+            lp.height = 500 * listNotPay.size();
             lvNotPayedReceipt.setLayoutParams(lp);
 
             lvNotPayedReceipt.setAdapter(adapterNotPay);

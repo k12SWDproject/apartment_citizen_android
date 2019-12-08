@@ -1,22 +1,15 @@
 package com.example.projectswd.fragments;
 
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.projectswd.R;
-import com.example.projectswd.activities.ElectricActivity;
-import com.example.projectswd.activities.OrtherActivity;
+import androidx.fragment.app.Fragment;
 
-import com.example.projectswd.activities.WaterActivity;
-import com.example.projectswd.activities.WifiActivity;
+import com.example.projectswd.R;
 import com.example.projectswd.model.House;
 import com.example.projectswd.model.User;
 
@@ -31,9 +24,10 @@ public class HomeFragment extends Fragment {
     TextView txtMoney;
 
     public HomeFragment( ) {
-
+        // Required empty public constructor
 
     }
+
 
     @Override
     public void onStart() {
@@ -46,7 +40,7 @@ public class HomeFragment extends Fragment {
         if(user.getMoney()==null){
             txtMoney.setText("0 VND");
         }else{
-            txtMoney.setText(user.getMoney()+" - VND");
+            txtMoney.setText(user.getMoney()+"VND");
         }
 
 
