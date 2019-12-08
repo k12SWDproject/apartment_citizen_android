@@ -10,15 +10,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.projectswd.R;
 import com.example.projectswd.adapter.ProductAdapter;
 import com.example.projectswd.contract.ServiceActivityContract;
 import com.example.projectswd.model.CartObject;
-import com.example.projectswd.model.FilterObj;
-import com.example.projectswd.model.FilterProduct;
+import com.example.projectswd.model.FilterName;
 import com.example.projectswd.model.Product;
 import com.example.projectswd.model.User;
 import com.example.projectswd.presenters.ServiceActivityPresenter;
@@ -38,9 +36,8 @@ public class ServiceActivity extends AppCompatActivity implements ServiceActivit
     private ServiceActivityPresenter presenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_service);
+    protected void onStart() {
+        super.onStart();
         list = new ArrayList<>();
 
         lvProduct = findViewById(R.id.lvProduct);
@@ -49,7 +46,7 @@ public class ServiceActivity extends AppCompatActivity implements ServiceActivit
         user = (User) intent.getSerializableExtra("USERINFO");
         token = intent.getStringExtra("TOKEN");
         initPresenter();
-        FilterProduct filterObj = new FilterProduct();
+        FilterName filterObj = new FilterName();
         filterObj.setName("");
         presenter.getListProduct(token,filterObj);
 
@@ -68,11 +65,18 @@ public class ServiceActivity extends AppCompatActivity implements ServiceActivit
             public void afterTextChanged(Editable s) {
 
                 String search = s.toString();
-                FilterProduct filterObj = new FilterProduct();
+                FilterName filterObj = new FilterName();
                 filterObj.setName(search);
                 searchProduct(filterObj);
             }
         });
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_service);
+
     }
 
 
@@ -80,9 +84,9 @@ public class ServiceActivity extends AppCompatActivity implements ServiceActivit
         presenter = new ServiceActivityPresenter(this);
     }
 
-    private void searchProduct(FilterProduct filterProduct){
+    private void searchProduct(FilterName filterName){
         presenter = new ServiceActivityPresenter(this);
-        presenter.getListProduct(token,filterProduct);
+        presenter.getListProduct(token, filterName);
 
 
     }
@@ -138,7 +142,8 @@ public class ServiceActivity extends AppCompatActivity implements ServiceActivit
 
         bundle.putSerializable("PRODUCT", (Serializable) MenuActivity.productList);
         intent.putExtra("BUNDLE",bundle);
+        intent.putExtra("TOKEN",token);
         startActivity(intent);
-//        intent.putExtra("LISTPRO", list);
+//
     }
 }

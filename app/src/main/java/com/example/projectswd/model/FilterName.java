@@ -1,12 +1,12 @@
 package com.example.projectswd.model;
 
-public class FilterProduct {
+public class FilterName {
     private String name;
 
-    public FilterProduct() {
+    public FilterName() {
     }
 
-    public FilterProduct(String name) {
+    public FilterName(String name) {
         this.name = name;
     }
 

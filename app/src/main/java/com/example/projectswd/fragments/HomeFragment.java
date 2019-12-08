@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.example.projectswd.R;
 import com.example.projectswd.activities.ElectricActivity;
 import com.example.projectswd.activities.OrtherActivity;
-import com.example.projectswd.activities.ProfileActivity;
+
 import com.example.projectswd.activities.WaterActivity;
 import com.example.projectswd.activities.WifiActivity;
 import com.example.projectswd.model.House;
@@ -31,19 +31,14 @@ public class HomeFragment extends Fragment {
     TextView txtMoney;
 
     public HomeFragment( ) {
-        // Required empty public constructor
+
 
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        txtMoney = view.findViewById(R.id.txtMoneyOfUser);
-        TextView txtInfo = view.findViewById(R.id.txtInfo);
-
-                user = (User) getArguments().getSerializable("USERINFO");
+    public void onStart() {
+        super.onStart();
+        user = (User) getArguments().getSerializable("USERINFO");
         token = getArguments().getString("TOKEN");
         house = user.getHouse();
 
@@ -51,10 +46,22 @@ public class HomeFragment extends Fragment {
         if(user.getMoney()==null){
             txtMoney.setText("0 VND");
         }else{
-            txtMoney.setText(user.getMoney()+"VND");
+            txtMoney.setText(user.getMoney()+" - VND");
         }
 
 
+
+
+
+    }
+
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        txtMoney = view.findViewById(R.id.txtMoneyOfUser);
 
         return  view;
     }

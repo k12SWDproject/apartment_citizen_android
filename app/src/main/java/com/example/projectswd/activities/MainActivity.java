@@ -57,12 +57,12 @@ public class MainActivity extends AppCompatActivity  {
         startActivity(intent);
     }
 
-    public void clickToProfile(View view) {
-        Intent  intent = new Intent(getApplicationContext(), ProfileActivity.class);
-        intent.putExtra("TOKEN", token);
-        intent.putExtra("USERINFO",user);
-        startActivity(intent);
-    }
+//    public void clickToProfile(View view) {
+//        Intent  intent = new Intent(getApplicationContext(), ProfileActivity.class);
+//        intent.putExtra("TOKEN", token);
+//        intent.putExtra("USERINFO",user);
+//        startActivity(intent);
+//    }
     public void clickToMemberManage() {
         Intent  intent = new Intent(getApplicationContext(), ManageMembersActivity.class);
         intent.putExtra("TOKEN", token);

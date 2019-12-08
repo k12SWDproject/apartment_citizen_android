@@ -14,7 +14,7 @@ public class User implements Serializable {
     private String username;
     private String password;
     private Role role;
-
+    private String email;
     private House house;
     private Integer creator;
     private String profileImage;
@@ -33,6 +33,14 @@ public User(){
     public User(String idNumber, String fullName) {
         this.idNumber = idNumber;
         this.fullName = fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public User(int id, String username, String password, Role role, House house, Integer creator, String profileImage, Date dateOfBirth, String idNumber, Integer gender, String fullName, Date createDate, Date lastModified, Integer status, BigDecimal money) {

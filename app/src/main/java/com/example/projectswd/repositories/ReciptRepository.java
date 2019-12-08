@@ -18,5 +18,5 @@ public interface ReciptRepository {
     void getDetailReceipt(String token , FilterObj filterObj, CallBackData<ReceiptDTO> callBackData);
     void payReceipta(String token,int id, CallBackData<ResponseBody> callBackData);
 
-    void getListMember(String token, int id, CallBackData<List<User>> callBackData );
+
 }

@@ -1,8 +1,7 @@
 package com.example.projectswd.presenters;
 
 import com.example.projectswd.contract.ServiceActivityContract;
-import com.example.projectswd.model.FilterObj;
-import com.example.projectswd.model.FilterProduct;
+import com.example.projectswd.model.FilterName;
 import com.example.projectswd.model.Product;
 import com.example.projectswd.repositories.ProductRepository;
 import com.example.projectswd.repositories.ProductRepositoryImp;
@@ -21,8 +20,8 @@ public class ServiceActivityPresenter implements ServiceActivityContract.present
     }
 
     @Override
-    public void getListProduct(String token, FilterProduct filterProduct) {
-        productRepository.getListProduct(token, filterProduct, new CallBackData<List<Product>>() {
+    public void getListProduct(String token, FilterName filterName) {
+        productRepository.getListProduct(token, filterName, new CallBackData<List<Product>>() {
             @Override
             public void success(List<Product> products) {
                 view.getListProductSuccess(products);

@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.example.projectswd.fragments.HomeFragment;
 import com.example.projectswd.R;
+import com.example.projectswd.fragments.OrderFragment;
+import com.example.projectswd.fragments.ProfileFragment;
 import com.example.projectswd.model.CartObject;
 import com.example.projectswd.model.Product;
 import com.example.projectswd.model.User;
@@ -29,7 +31,7 @@ public class MenuActivity extends AppCompatActivity {
 
     public static List<CartObject> productList;
     public static List<Product> productsToCompare;
-
+    public static String tokenTmp;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener =new
             BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -39,17 +41,28 @@ public class MenuActivity extends AppCompatActivity {
 
                     switch (menuItem.getItemId()){
                         case R.id.navigation_dashboard:
-//                            selctFrag = new ProductFragment();
-                            break;
+//
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("USERINFO",user);
+                        bundle.putString("TOKEN",token);
+                        selctFrag= new OrderFragment();
+                        selctFrag.setArguments(bundle);
+                        break;
                         case R.id.navigation_home:
+
                             Bundle intent = new Bundle();
                             intent.putSerializable("USERINFO",user);
                             intent.putString("TOKEN",token);
                             selctFrag= new HomeFragment();
                             selctFrag.setArguments(intent);
                             break;
+
                         case R.id.navigation_notifications:
-//                            selctFrag= new WarehouseFragment();
+                               Bundle bundle1 = new Bundle();
+                            bundle1.putSerializable("USERINFO",user);
+                            bundle1.putString("TOKEN",token);
+                            selctFrag= new ProfileFragment();
+                            selctFrag.setArguments(bundle1);
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_content, selctFrag).commit();
@@ -68,7 +81,7 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("USERINFO");
         token = intent.getStringExtra("TOKEN");
-
+        tokenTmp = token;
         txtNameOwner = findViewById(R.id.txtNameOwner);
         txtApartmentNumber = findViewById(R.id.txtAparmentID);
 
@@ -77,6 +90,7 @@ public class MenuActivity extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
         bundle.putSerializable("USERINFO",user);
+
         bundle.putString("TOKEN",token);
         HomeFragment homeFragment = new HomeFragment();
         homeFragment.setArguments(bundle);
@@ -114,12 +128,12 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void clickToProfile(View view) {
-        Intent  intent = new Intent(getApplicationContext(), ProfileActivity.class);
-        intent.putExtra("TOKEN", token);
-        intent.putExtra("USERINFO",user);
-        startActivity(intent);
-    }
+//    public void clickToProfile(View view) {
+//        Intent  intent = new Intent(getApplicationContext(), ProfileActivity.class);
+//        intent.putExtra("TOKEN", token);
+//        intent.putExtra("USERINFO",user);
+//        startActivity(intent);
+//    }
 
     public void clickToService(View view) {
         Intent  intent = new Intent(getApplicationContext(), ServiceActivity.class);
@@ -127,4 +141,6 @@ public class MenuActivity extends AppCompatActivity {
         intent.putExtra("USERINFO",user);
         startActivity(intent);
     }
+
+
 }

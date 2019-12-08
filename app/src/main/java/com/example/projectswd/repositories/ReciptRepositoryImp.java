@@ -119,10 +119,7 @@ public class ReciptRepositoryImp implements ReciptRepository {
 
     }
 
-    @Override
-    public void getListMember(String token, int id, CallBackData<List<User>> callBackData) {
 
-    }
 
 
 }

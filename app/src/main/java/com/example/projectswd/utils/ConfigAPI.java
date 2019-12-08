@@ -11,5 +11,9 @@ public class ConfigAPI {
         String PAYRECEIPT = "api/receipts/{id}/status";
         String GETPRODUCTS = "api/products";
         String GETMEMBERS ="api/users";
+        String PAYMENT = "api/orders";
+        String GETORDERS = "api/orders/my-order";
+        String UPDATELISTMEMER = "api/houses/member/{username}";
+
     }
 }

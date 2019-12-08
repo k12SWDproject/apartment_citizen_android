@@ -3,16 +3,12 @@ package com.example.projectswd.model;
 import java.io.Serializable;
 import java.math.BigInteger;
 
-public class CartObject implements Serializable {
-
+public class OrderDetail implements Serializable {
     private int id;
-    private int quantity;
     private String name;
     private String image;
+    private int quantity;
     private BigInteger price;
-    private int quantityOfCart;
-
-
 
     public int getId() {
         return id;
@@ -20,14 +16,6 @@ public class CartObject implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public String getName() {
@@ -46,19 +34,19 @@ public class CartObject implements Serializable {
         this.image = image;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public BigInteger getPrice() {
         return price;
     }
 
     public void setPrice(BigInteger price) {
         this.price = price;
-    }
-
-    public int getQuantityOfCart() {
-        return quantityOfCart;
-    }
-
-    public void setQuantityOfCart(int quantityOfCart) {
-        this.quantityOfCart = quantityOfCart;
     }
 }

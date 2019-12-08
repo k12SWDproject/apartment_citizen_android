@@ -1,14 +1,13 @@
 package com.example.projectswd.contract;
 
-import com.example.projectswd.model.FilterObj;
-import com.example.projectswd.model.FilterProduct;
+import com.example.projectswd.model.FilterName;
 import com.example.projectswd.model.Product;
 
 import java.util.List;
 
 public interface ServiceActivityContract {
     interface presenter{
-        void getListProduct(String token, FilterProduct filterProduct);
+        void getListProduct(String token, FilterName filterName);
     }
 
     interface view{

@@ -8,30 +8,39 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.projectswd.R;
 import com.example.projectswd.adapter.CartAdapter;
 import com.example.projectswd.adapter.ProductAdapter;
+import com.example.projectswd.contract.CartActivityContract;
 import com.example.projectswd.model.CartObject;
+import com.example.projectswd.model.PayObject;
 import com.example.projectswd.model.Product;
+import com.example.projectswd.presenters.CartActivityPresenter;
 import com.google.gson.Gson;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CartActivity extends AppCompatActivity {
+import okhttp3.ResponseBody;
+
+public class CartActivity extends AppCompatActivity implements CartActivityContract.view {
     List<Product> products;
     List<CartObject> cartObjects;
     TextView txtTotal;
     ListView lvProduct;
+    private CartActivityPresenter cartActivityPresenter;
+    private String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
         CartAdapter adapter = new CartAdapter();
-
+        Intent intent = getIntent();
+        token = intent.getStringExtra("TOKEN");
         lvProduct = findViewById(R.id.lvProductOfCart);
         txtTotal = findViewById(R.id.txtTotal);
         adapter.setCartObjects(MenuActivity.productList);
@@ -52,16 +61,46 @@ public class CartActivity extends AppCompatActivity {
             }
         });
 
+        initPresenter();
 
 //        lvProduct.deferNotifyDataSetChanged();
 
     }
 
+    private void initPresenter(){
+        cartActivityPresenter = new CartActivityPresenter(this);
+    }
+
     public void clickToPayOrder(View view) {
-        Gson gson = new Gson();
 
-        String json = gson.toJson(gson);
+       List<PayObject> payObjectList = new ArrayList<>();
+       PayObject payObject;
+       for (int i = 0; i <MenuActivity.productList.size();i++){
+           payObject= new PayObject();
+           payObject.setId(MenuActivity.productList.get(i).getId());
+           payObject.setQuantity(MenuActivity.productList.get(i).getQuantityOfCart());
+           payObjectList.add(payObject);
+       }
+       Gson gson = new Gson();
+       String json = gson.toJson(payObjectList);
+        Log.d("LGOOOOOOOOOOOOOOOOA", json);
+       cartActivityPresenter.payment(token,payObjectList);
 
 
+    }
+
+
+
+    @Override
+    public void paymentSuccess(ResponseBody responseBody) {
+
+        Toast.makeText(this, "Thanh toán thành công", Toast.LENGTH_SHORT).show();
+        onBackPressed();
+
+    }
+
+    @Override
+    public void paymentFail(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }
