@@ -167,12 +167,7 @@ public class ProfileFragment extends DialogFragment implements ProfileActivityCo
 
 
 
-        btnCalender.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDate();
-            }
-        });
+       this.showDatePickerDialog();
 
 
         return view;
@@ -243,15 +238,55 @@ public class ProfileFragment extends DialogFragment implements ProfileActivityCo
         } else {
             months = month + 1 + "";
         }
-        edtBirthdate.setText(year + "-" + months + "-" + day);
+        showDate(year,months,day);
 
 
     }
 //
-    private void showDate(){
-        DialogFragment dialogFragment = new DateTimeFragment(getView());
-        dialogFragment.show(getFragmentManager(),"aaa");
+    private void showDate(int year, String months, String day){
+        edtBirthdate.setText(year + "-" + months + "-" + day);
     }
 
+    private void showDatePickerDialog()
+    {
+        // Get open DatePickerDialog button.
+//        Button datePickerDialogButton = btnCalender(R.id.datePickerDialogButton);
+        btnCalender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create a new OnDateSetListener instance. This listener will be invoked when user click ok button in DatePickerDialog.
+                DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                        StringBuffer strBuf = new StringBuffer();
 
+                        strBuf.append(year);
+                        strBuf.append("-");
+                        strBuf.append(month+1);
+                        strBuf.append("-");
+                        strBuf.append(dayOfMonth);
+
+
+                        edtBirthdate.setText(strBuf.toString());
+                    }
+                };
+
+                // Get current year, month and day.
+                Calendar now = Calendar.getInstance();
+                int year = now.get(java.util.Calendar.YEAR);
+                int month = now.get(java.util.Calendar.MONTH);
+                int day = now.get(java.util.Calendar.DAY_OF_MONTH);
+
+                // Create the new DatePickerDialog instance.
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), onDateSetListener, year, month, day);
+
+                // Set dialog icon and title.
+//                datePickerDialog.setIcon(R.drawable.if_snowman);
+
+
+                // Popup the dialog.
+                datePickerDialog.show();
+            }
+        });
+    }
 }

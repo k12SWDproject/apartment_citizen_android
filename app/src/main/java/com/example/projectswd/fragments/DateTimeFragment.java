@@ -28,9 +28,9 @@ public class DateTimeFragment extends DialogFragment {
 
 
 
-View view;
-    public DateTimeFragment(View view) {
-        this.view = view;
+
+    public DateTimeFragment() {
+
     }
 
 
@@ -42,7 +42,7 @@ View view;
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
         return new DatePickerDialog(getActivity(), R.style.Theme_AppCompat_DayNight_Dialog,
-                (DatePickerDialog.OnDateSetListener) view, year, month, day);
+                (DatePickerDialog.OnDateSetListener) getActivity(), year, month, day);
     }
 
 }
