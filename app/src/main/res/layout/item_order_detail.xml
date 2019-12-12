@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:text="2000000"
-                android:id="@+id/txtPriceOrderDetail"
+                android:id="@+id/txtTotalOrderDetail"
                 android:gravity="center"
                 android:layout_height="match_parent"/>
         </LinearLayout>

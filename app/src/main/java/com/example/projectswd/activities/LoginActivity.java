@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://spwproject.herokuapp.com/").addConverterFactory(GsonConverterFactory.create()).build();
 
         APIService json = retrofit.create(APIService.class);
-        Call<User> call = json.getInforByUsername(username, token);
+        Call<User> call = json.getInforByUsername(token, username);
         call.enqueue(new Callback<User>() {
          @Override
         public void onResponse(Call<User> call, Response<User> response) {

@@ -13,8 +13,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 
 import com.example.projectswd.R;
+import com.example.projectswd.activities.MenuActivity;
 
 
 import java.util.Calendar;
@@ -25,21 +27,22 @@ import java.util.Calendar;
 public class DateTimeFragment extends DialogFragment {
 
 
-    public DateTimeFragment() {
-        // Required empty public constructor
+
+View view;
+    public DateTimeFragment(View view) {
+        this.view = view;
     }
 
-    @NonNull
+
     @Override
-    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+    public Dialog onCreateDialog( Bundle savedInstanceState) {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR) - 18;
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
         return new DatePickerDialog(getActivity(), R.style.Theme_AppCompat_DayNight_Dialog,
-                (DatePickerDialog.OnDateSetListener) getActivity(), year, month, day);
+                (DatePickerDialog.OnDateSetListener) view, year, month, day);
     }
-
 
 }

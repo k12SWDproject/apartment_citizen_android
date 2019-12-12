@@ -16,4 +16,5 @@ public interface UserRepository {
     void addMember (String token, String username, CallBackData<ResponseBody> callBackData);
     void deleteMember(String token, String username, CallBackData<ResponseBody> callBackData);
     void updateMember(String token, UserUpdateDTO user, CallBackData<User> callBackData);
+    void getUserByUsername(String token, String username, CallBackData<User> callBackData);
 }

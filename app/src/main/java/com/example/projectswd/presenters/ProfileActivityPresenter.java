@@ -30,4 +30,19 @@ public class ProfileActivityPresenter implements ProfileActivityContract.present
             }
         });
     }
+
+    @Override
+    public void getUser(String token, String username) {
+        userRepository.getUserByUsername(token, username, new CallBackData<User>() {
+            @Override
+            public void success(User user) {
+                view.getUserSuccess(user);
+            }
+
+            @Override
+            public void fail(String msg) {
+                view.getUserFail(msg);
+            }
+        });
+    }
 }

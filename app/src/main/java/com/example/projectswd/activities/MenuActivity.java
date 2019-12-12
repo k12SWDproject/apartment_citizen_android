@@ -2,14 +2,20 @@ package com.example.projectswd.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.projectswd.fragments.DateTimeFragment;
 import com.example.projectswd.fragments.HomeFragment;
 import com.example.projectswd.R;
 import com.example.projectswd.fragments.OrderFragment;
@@ -20,9 +26,10 @@ import com.example.projectswd.model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     private TextView txtNameOwner,txtApartmentNumber;
 
 
@@ -32,6 +39,8 @@ public class MenuActivity extends AppCompatActivity {
     public static List<CartObject> productList;
     public static List<Product> productsToCompare;
     public static String tokenTmp;
+
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener =new
             BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -76,6 +85,10 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
+//        Button btnCalender = findViewById(R.id.btnCalenderBirth);
+
+
+
         productList = new ArrayList<>();
         productsToCompare = new ArrayList<>();
         Intent intent = getIntent();
@@ -97,6 +110,8 @@ public class MenuActivity extends AppCompatActivity {
 
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_content, homeFragment).commit();
+
+
     }
 
     public void clickToElectric(View view) {
@@ -128,12 +143,6 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    public void clickToProfile(View view) {
-//        Intent  intent = new Intent(getApplicationContext(), ProfileActivity.class);
-//        intent.putExtra("TOKEN", token);
-//        intent.putExtra("USERINFO",user);
-//        startActivity(intent);
-//    }
 
     public void clickToService(View view) {
         Intent  intent = new Intent(getApplicationContext(), ServiceActivity.class);
@@ -142,5 +151,44 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        String day = "", months = "";
 
+        if (dayOfMonth < 10) {
+            day = "0" + dayOfMonth;
+        } else {
+            day = dayOfMonth + "";
+        }
+        if (month + 1 < 10) {
+            months = "0" + (month + 1);
+        } else {
+            months = month + 1 + "";
+        }
+    }
+
+
+//    @Override
+//    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+//        String day = "", months = "";
+//
+//        if (dayOfMonth < 10) {
+//            day = "0" + dayOfMonth;
+//        } else {
+//            day = dayOfMonth + "";
+//        }
+//        if (month + 1 < 10) {
+//            months = "0" + (month + 1);
+//        } else {
+//            months = month + 1 + "";
+//        }
+//
+//    }
+//    private void getTime(String tag) {
+//        DialogFragment fragment = new DateTimeFragment();
+//
+//        fragment.show(getSupportFragmentManager(), tag);
+//
+//
+//    }
 }
