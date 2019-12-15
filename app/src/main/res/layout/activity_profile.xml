@@ -7,10 +7,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ProfileFragment">
 
-<!--    <View-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="170dp"-->
-<!--        android:background="@drawable/wallpaper1" />-->
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
 
 
@@ -27,70 +26,14 @@
             android:layout_height="match_parent"
             android:layout_marginTop="10dp">
 
-<!--            <de.hdodenhof.circleimageview.CircleImageView-->
-<!--                android:id="@+id/imageView"-->
-<!--                android:layout_width="100dp"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:elevation="1dp"-->
-<!--                android:src="@drawable/profile" />-->
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="60dp"-->
-<!--                    app:cardCornerRadius="20dp"-->
-<!--                    app:contentPaddingBottom="15dp"-->
-<!--                    app:contentPaddingLeft="15dp"-->
-<!--                    app:contentPaddingRight="15dp"-->
-<!--                    app:contentPaddingTop="40dp">-->
 
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:orientation="vertical">-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/titleName"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-
-<!--                            android:gravity="center"-->
-<!--                            android:text="Nguyễn Minh Trí"-->
-<!--                            android:textColor="#000000"-->
-<!--                            android:textSize="20dp"-->
-<!--                            android:textStyle="bold" />-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/titleApartment"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_below="@id/titleName"-->
-<!--                            android:gravity="center"-->
-<!--                            android:text="Apartment"-->
-<!--                            android:textColor="#000000"-->
-<!--                            android:textSize="15dp" />-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/numberApartment"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_below="@id/titleApartment"-->
-<!--                            android:gravity="center"-->
-<!--                            android:text="AB-504"-->
-<!--                            android:textColor="#000000"-->
-<!--                            android:textSize="20dp"-->
-<!--                            android:textStyle="bold" />-->
-<!--                    </LinearLayout>-->
-
-
-<!--                </androidx.cardview.widget.CardView>-->
 
 
                 <LinearLayout
@@ -236,16 +179,7 @@
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
 
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/round_bg"
-                        android:layout_gravity="center"
-                        android:id="@+id/btnManage"
-                        android:text="quản lý thành thành viên trong căn hộ"
-                        android:layout_marginBottom="5dp"
-                        android:textColor="#FFF"
-                        android:textStyle="bold"/>
+
 
 
                 <RelativeLayout
@@ -275,8 +209,45 @@
 
 
                         android:visibility="invisible" />
-                </RelativeLayout>
+<!--                    <Button-->
+<!--                        android:id="@+id/btn_logout_g"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/round_bg"-->
+<!--                        android:text="Logout"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:textColor="#FFF"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:layout_below="@id/updateButton"-->
 
+<!--                        />-->
+
+                </RelativeLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_bg"
+                    android:layout_gravity="center"
+                    android:id="@+id/btnManage"
+                    android:text="quản lý thành thành viên trong căn hộ"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#FFF"
+                    android:textStyle="bold"/>
+                <Button
+
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_logout_g"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="#d6d6c2"
+                    android:drawableStart="@drawable/ic_google_logo"
+                    android:drawableLeft="@drawable/ic_google_logo"
+                    android:text="Logout" />
 
             </LinearLayout>
 
@@ -285,6 +256,6 @@
 
 
     </LinearLayout>
-
+</androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

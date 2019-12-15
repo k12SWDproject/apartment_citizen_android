@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.projectswd.contract.MenuActivityContract;
 import com.example.projectswd.fragments.DateTimeFragment;
@@ -35,7 +36,8 @@ public class MenuActivity extends AppCompatActivity implements MenuActivityContr
     private TextView txtNameOwner,txtApartmentNumber;
 
 
-    private User user;
+    User user;
+    private  String username;
     private  String token;
     private MenuActivityPresenter presenter;
     public static List<CartObject> productList;
@@ -64,6 +66,7 @@ public class MenuActivity extends AppCompatActivity implements MenuActivityContr
                             Bundle intent = new Bundle();
                             intent.putSerializable("USERINFO",user);
                             intent.putString("TOKEN",token);
+                            intent.putString("USERNAME",username);
                             selctFrag= new HomeFragment();
                             selctFrag.setArguments(intent);
                             break;
@@ -87,27 +90,24 @@ public class MenuActivity extends AppCompatActivity implements MenuActivityContr
         setContentView(R.layout.activity_menu);
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
-//        Button btnCalender = findViewById(R.id.btnCalenderBirth);
-
-
-
         productList = new ArrayList<>();
         productsToCompare = new ArrayList<>();
         Intent intent = getIntent();
-        user = (User) intent.getSerializableExtra("USERINFO");
+//        user = (User) intent.getSerializableExtra("USERINFO");
+        username= intent.getStringExtra("USERNAME");
         token = intent.getStringExtra("TOKEN");
         initPresenter();
-        presenter.getUser(token, user.getUsername());
+        presenter.getUser(token,username);
+
         tokenTmp = token;
         txtNameOwner = findViewById(R.id.txtNameOwner);
         txtApartmentNumber = findViewById(R.id.txtAparmentID);
 
-        txtNameOwner.setText(user.getFullName());
-        txtApartmentNumber.setText(user.getHouse().getHouseName());
+
 
         Bundle bundle = new Bundle();
-        bundle.putSerializable("USERINFO",user);
-
+//        bundle.putSerializable("USERINFO",user);
+        bundle.putString("USERNAME",username);
         bundle.putString("TOKEN",token);
         HomeFragment homeFragment = new HomeFragment();
         homeFragment.setArguments(bundle);
@@ -163,12 +163,14 @@ public class MenuActivity extends AppCompatActivity implements MenuActivityContr
 
     @Override
     public void getUserSuccess(User user) {
-
+        this.user = user;
+        txtNameOwner.setText(user.getFullName());
+        txtApartmentNumber.setText(user.getHouse().getHouseName());
     }
 
     @Override
     public void getUserFail(String msg) {
-
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
 

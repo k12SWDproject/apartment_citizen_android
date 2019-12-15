@@ -36,7 +36,7 @@ public class UserRepositoryImp implements UserRepository {
                     if(response.code() == 200){
                         callBackData.success(response.body().string());
                     }else if (response.code() == 204){
-                        callBackData.success(response.body().string());
+                        callBackData.success(null);
                     }else{
                         callBackData.fail("Đăng nhập thất bại");
                     }
@@ -48,6 +48,31 @@ public class UserRepositoryImp implements UserRepository {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
 
+            }
+        });
+    }
+
+    @Override
+    public void login(String username, String password, final CallBackData<String> callBackData) {
+        ClientApi clientApi = new ClientApi();
+        Call<ResponseBody> call = clientApi.APIService().gettToken(username,password);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try{
+                    if(response.code()==200){
+                        callBackData.success(response.body().string());
+                    }else{
+                        callBackData.fail("Đăng nhập thất bại");
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBackData.fail("Vui lòng kiểm tra lại");
             }
         });
     }

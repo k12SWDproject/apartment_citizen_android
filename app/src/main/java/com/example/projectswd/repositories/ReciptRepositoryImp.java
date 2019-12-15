@@ -76,7 +76,7 @@ public class ReciptRepositoryImp implements ReciptRepository {
                         }
 
                     } else {
-                        callBackData.fail("Failed");
+                        callBackData.fail("Lấy thông tin thất bại");
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -103,7 +103,7 @@ public class ReciptRepositoryImp implements ReciptRepository {
                     if(response.code() ==200){
                         callBackData.success(response.body());
                     }else{
-                        callBackData.fail("Failed !!");
+                        callBackData.fail("Thanh toán thất bại");
                     }
                 }
                 catch (Exception e){

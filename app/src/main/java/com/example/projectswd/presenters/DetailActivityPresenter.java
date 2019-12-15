@@ -42,7 +42,7 @@ public class DetailActivityPresenter implements DetailActivityContract.presenter
         reciptRepository.payReceipta(token, id, new CallBackData<ResponseBody>() {
             @Override
             public void success(ResponseBody responseBody) {
-                view.payReceiptSuccess("Success");
+                view.payReceiptSuccess("Thanh Toán Thành Công");
             }
 
             @Override

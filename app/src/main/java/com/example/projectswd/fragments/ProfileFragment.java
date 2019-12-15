@@ -4,6 +4,7 @@ package com.example.projectswd.fragments;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,25 +12,37 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.example.projectswd.R;
+import com.example.projectswd.activities.LoginActivity;
+import com.example.projectswd.activities.LoginGoogleActivity;
 import com.example.projectswd.activities.ManageMembersActivity;
+import com.example.projectswd.activities.MenuActivity;
 import com.example.projectswd.contract.ProfileActivityContract;
 import com.example.projectswd.model.House;
 import com.example.projectswd.model.User;
 import com.example.projectswd.model.UserUpdateDTO;
 import com.example.projectswd.presenters.ProfileActivityPresenter;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,27 +54,32 @@ public class ProfileFragment extends DialogFragment implements ProfileActivityCo
         // Required empty public constructor
     }
 
+
+
+
+
     public EditText edtBirthdate;
     EditText edtFullname, edtEmail, edtPhoneNo;
-    TextView titleName;
-    Button edtBtn, updateBtn, btnManage, btnCalender;
+
+    Button edtBtn, updateBtn, btnManage, btnCalender, btnLogout;
     Spinner spinnerGender;
     private House house;
     private String token;
     private User user;
     private ProfileActivityPresenter presenter;
     private ArrayAdapter<String> dataAdapter;
+
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_profile, container, false);
         // Inflate the layout for this fragment
-        final Intent intent = getActivity().getIntent();
+         Intent intent = getActivity().getIntent();
         user = (User) intent.getSerializableExtra("USERINFO");
         token = intent.getStringExtra("TOKEN");
-        house = user.getHouse();
 
 
+        btnLogout = view.findViewById(R.id.btn_logout_g);
         edtFullname = view.findViewById(R.id.edtFullname);
         spinnerGender = view.findViewById(R.id.spnGender);
         edtEmail = view.findViewById(R.id.edtEmail);
@@ -98,16 +116,16 @@ public class ProfileFragment extends DialogFragment implements ProfileActivityCo
             }
         });
 
-        if(user.getFullName() == null){
+        if (user.getFullName() == null) {
             edtFullname.setText(user.getUsername());
-        }else{
+        } else {
             edtFullname.setText(user.getFullName());
         }
 
 
-        if(user.getGender()==null){
+        if (user.getGender() == null) {
             spinnerGender.setSelection(dataAdapter.getPosition("Nam"));
-        }else{
+        } else {
             if (user.getGender() == 1) {
 //            spinnerGender.setAdapter();
                 spinnerGender.setSelection(dataAdapter.getPosition("Nam"));
@@ -123,13 +141,11 @@ public class ProfileFragment extends DialogFragment implements ProfileActivityCo
         edtEmail.setText(user.getUsername());
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
-        if(user.getDateOfBirth()==null){
+        if (user.getDateOfBirth() == null) {
             edtBirthdate.setText(sf.format(date));
-        }else{
+        } else {
             edtBirthdate.setText(sf.format(user.getDateOfBirth()));
         }
-
-
 
 
         edtBtn.setOnClickListener(new View.OnClickListener() {
@@ -172,7 +188,12 @@ public class ProfileFragment extends DialogFragment implements ProfileActivityCo
 
         this.showDatePickerDialog();
 
-
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
         return view;
     }
 
@@ -291,5 +312,26 @@ public class ProfileFragment extends DialogFragment implements ProfileActivityCo
                 datePickerDialog.show();
             }
         });
+    }
+
+    void logout() {
+        FirebaseAuth.getInstance().signOut();
+        if (LoginGoogleActivity.mGoogleSignInClient != null) {
+            LoginGoogleActivity.mGoogleSignInClient.signOut().addOnCompleteListener(getActivity(),
+                    new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            getActivity().finish();
+                            Intent intent = new Intent(getActivity(), LoginActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+        } else {
+            getActivity().finish();
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+        }
+
+
     }
 }

@@ -90,7 +90,7 @@ public class OrderFragment extends Fragment implements ProductFragmentContract.v
         if(orderNotReceive.size()>0){
             adapterNotReceive.setOrderDTOS(orderNotReceive);
             LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) lvNotReceive.getLayoutParams();
-            lp.height = 230 * orderNotReceive.size();
+            lp.height = 100 * orderNotReceive.size();
             lvNotReceive.setLayoutParams(lp);
             lvNotReceive.setAdapter(adapterNotReceive);
             detail(lvNotReceive,adapterNotReceive);
@@ -104,7 +104,7 @@ public class OrderFragment extends Fragment implements ProductFragmentContract.v
         if(orderReceived.size()>0){
             adapterReceived.setOrderDTOS(orderReceived);
             LinearLayout.LayoutParams lp2 = (LinearLayout.LayoutParams) lvReceived.getLayoutParams();
-            lp2.height = 230 * orderReceived.size();
+            lp2.height = 100 * orderReceived.size();
             lvReceived.setLayoutParams(lp2);
             lvReceived.setAdapter(adapterReceived);
             detail(lvReceived,adapterReceived);
@@ -128,6 +128,7 @@ public class OrderFragment extends Fragment implements ProductFragmentContract.v
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
                 List<OrderDetail> orderDetails = adapter.getOrderDTOS().get(position).getOrderDetail();
+                intent.putExtra("USERINFO",user);
                 intent.putExtra("DETAIL", (Serializable) orderDetails);
                 startActivity(intent);
             }

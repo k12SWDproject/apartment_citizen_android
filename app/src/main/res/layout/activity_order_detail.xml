@@ -19,19 +19,27 @@
 
                 <TextView
 
-                    android:id="@+id/txtNameReceipt"
+                    android:id="@+id/txtNameOrder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="50dp"
                     android:gravity="center"
-                    android:text="Tên Hóa Đơn"
+                    android:text="Chi tiết hóa đơn"
                     android:textColor="#ffff"
                     android:textSize="30dp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/txtUserInfoDetail"
+                    android:id="@+id/txtUserOrderDetail"
+                    android:text="Thông tin khách hàng"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#ffff"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/txtHouseOrderDetail"
                     android:text="Thông tin khách hàng"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

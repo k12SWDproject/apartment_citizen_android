@@ -37,11 +37,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class LoginGoogleActivity extends AppCompatActivity implements LoginGoogleActivityContract.view {
     static final int GOOGLE_SIGN = 123;
     FirebaseAuth mAuth;
-    Button button_Login, button_Logout;
+    Button button_Login;
     TextView textView;
     ProgressBar progressBar;
-    GoogleSignInClient mGoogleSignInClient;
-    CircleImageView imageView;
+   public static GoogleSignInClient mGoogleSignInClient;
+
     private String personName, token;
     private LoginGoogleActivityPresenter presenter;
     @Override
@@ -68,11 +68,6 @@ public class LoginGoogleActivity extends AppCompatActivity implements LoginGoogl
                 LoginGoogleActivity.this.SignInGoogle();
             }
         });
-//        button_Logout.setOnClickListener(v -> Logout());
-//        if (mAuth.getCurrentUser() != null) {
-//            FirebaseUser user = mAuth.getCurrentUser();
-//            updateUI(user);
-//        }
 
     }
 
@@ -88,10 +83,7 @@ public class LoginGoogleActivity extends AppCompatActivity implements LoginGoogl
 
     }
 
-    private void getUser(String token, String username){
-        initPresenter();
-        presenter.getUser(token, username);
-    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -143,58 +135,15 @@ public class LoginGoogleActivity extends AppCompatActivity implements LoginGoogl
         });
 
     }
-//    private void updateUI(FirebaseUser user) {
-//        textView.setText("");
-//        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-//        if (acct != null) {
-//            String personName = acct.getDisplayName();
-//            String personEmail = acct.getEmail();
-//            String personId = acct.getId();
-//
-//
-//            if (user != null) {
-//
-//
-//                String email = user.getEmail();
-//                String photo = String.valueOf(user.getPhotoUrl());
-//                String phoneNumber = user.getPhoneNumber();
-//                String uID = user.getUid();
-//                System.out.println(user.getIdToken(true).toString());
-//                textView.append("INFORMATION \n");
-//                textView.append("--------------------- \n");
-//                textView.append("Name:" + personName + "\n");
-//                textView.append("Email1: " + email + "\n");
-//                textView.append("Email2: " + personEmail + "\n");
-//                textView.append("Phone Number: " + phoneNumber + "\n");
-//                textView.append("User ID1: " + uID + "\n");
-//                textView.append("User ID2: " + personId + "\n");
-//                imageView = findViewById(R.id.imageView);
-//
-//                Picasso.get().load(photo)
-//                        .into(imageView);
-//
-//
-//
-//                button_Login.setVisibility(View.INVISIBLE);
-//                button_Logout.setVisibility(View.VISIBLE);
-//                progressBar.setVisibility(View.INVISIBLE);
-//
-//
-//            } else {
-//                textView.setText("Failed");
-//                button_Login.setVisibility(View.VISIBLE);
-//                button_Logout.setVisibility(View.INVISIBLE);
-//                progressBar.setVisibility(View.INVISIBLE);
-//
-//
-//            }
-//        }
-//    }
+
 
     @Override
     public void loginGooleSuccess(String token) {
         if(token == null){
+
             Toast.makeText(this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(),LoginFailedActivity.class);
+            startActivity(intent);
         }else{
         this.token = token;
         initPresenter();
@@ -210,6 +159,7 @@ public class LoginGoogleActivity extends AppCompatActivity implements LoginGoogl
     public void getUserSuccess(User user) {
         Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
         intent.putExtra("USERINFO", user);
+        intent.putExtra("USERNAME", user.getUsername());
         intent.putExtra("TOKEN", token);
         startActivity(intent);
     }

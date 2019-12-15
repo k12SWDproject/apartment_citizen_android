@@ -13,7 +13,7 @@ import okhttp3.ResponseBody;
 
 public interface UserRepository {
     void loginGoogle(LoginGoogle loginGoogle, CallBackData<String> callBackData);
-
+    void login(String username, String password, CallBackData<String> callBackData);
     void getListMember(String token, FilterHouse filterHouse, CallBackData<List<User>> callBackData );
     void getMemberByEmail(String token, FilterEmail filterEmail, CallBackData<List<User>> callBackData);
     void addMember (String token, String username, CallBackData<ResponseBody> callBackData);

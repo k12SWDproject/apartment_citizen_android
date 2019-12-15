@@ -7,12 +7,12 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_temple"
-
         android:label="Apartment Citizen"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
-        <activity android:name=".activities.OrderDetailActivity"></activity>
+        <activity android:name=".activities.LoginFailedActivity"></activity>
+        <activity android:name=".activities.OrderDetailActivity" />
         <activity android:name=".activities.CartActivity" />
         <activity android:name=".activities.ServiceActivity" />
         <activity android:name=".activities.DetailPayedActivity" />
@@ -20,12 +20,8 @@
         <activity android:name=".activities.OrtherActivity" />
         <activity android:name=".activities.WifiActivity" />
         <activity android:name=".activities.RegisterAcitvity" />
-        <activity android:name=".activities.LoginGoogleActivity" >
-
-        </activity>
-
+        <activity android:name=".activities.LoginGoogleActivity"></activity>
         <activity android:name=".activities.ManageMembersActivity" />
-
         <activity android:name=".activities.WaterActivity" />
         <activity android:name=".activities.ElectricActivity" />
         <activity android:name=".activities.LoginActivity">
@@ -36,7 +32,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.MenuActivity" />
-
     </application>
 
 </manifest>
