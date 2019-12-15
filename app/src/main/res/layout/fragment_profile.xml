@@ -184,7 +184,7 @@
                                 <Button android:layout_width="30dp"
                                     android:layout_height="30dp"
                                     android:layout_gravity="right"
-                                    android:background="@drawable/light"
+                                    android:background="@drawable/ic_calendar"
                                     android:onClick="clickToSetDate"
                                     />
                             </TableRow>

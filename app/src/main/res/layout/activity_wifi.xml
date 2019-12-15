@@ -21,7 +21,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@drawable/dien"
+                android:background="@drawable/wifi1"
 
                 android:orientation="vertical">
 
@@ -29,12 +29,12 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="80dp"
+                    android:layout_marginTop="50dp"
 
                     android:textColor="#FFFFFF"
                     android:gravity="center"
                     android:text="Hóa Đơn Tiền Wifi"
-                    android:textSize="30dp"
+                    android:textSize="25dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -42,7 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="#FFFFFF"
-
+                    android:layout_marginTop="25dp"
                     android:gravity="center"
                     android:textSize="20dp" />
             </LinearLayout>
@@ -62,14 +62,12 @@
                     android:textStyle="bold"
                     android:gravity="center"
                     android:background="#000"
+                    android:padding="5dp"
+
 
                     />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="5dp"
-                    android:background="#000" />
+
 
                 <ListView
                     android:id="@+id/lvWifiReceiptsNotPay"
@@ -104,14 +102,12 @@
                     android:textStyle="bold"
                     android:gravity="center"
                     android:background="#000"
+                    android:padding="5dp"
+
 
                     />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="5dp"
-                    android:background="#000" />
+
 
                 <ListView
                     android:id="@+id/lvWifiReceiptsPayed"

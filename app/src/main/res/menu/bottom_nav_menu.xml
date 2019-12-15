@@ -2,20 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/gift"
+        android:icon="@drawable/ic_product"
         android:title="Sản phẩm"
 
         />
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/receipt"
+        android:icon="@drawable/ic_file"
         android:title="Đơn hàng"
         />
 
     <item
         android:id="@+id/navigation_notifications"
-        android:icon="@drawable/shop"
+        android:icon="@drawable/ic_avatar"
 
-        android:title="Kho" />
+        android:title="Cá nhân" />
 </menu>

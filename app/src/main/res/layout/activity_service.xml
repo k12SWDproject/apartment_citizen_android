@@ -27,10 +27,11 @@
                 android:layout_width="320dp"
                 android:layout_height="40dp"
                 android:hint="Nhập tên sản phẩm"
-                android:paddingLeft="5dp"
+                android:padding="10dp"
                 android:background="@drawable/round_bg2"
                 android:textColorHint="#DDDDDD"
                 android:textStyle="italic"
+                android:textSize="15dp"
 
                 />
 
