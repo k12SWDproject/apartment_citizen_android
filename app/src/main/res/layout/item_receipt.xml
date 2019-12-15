@@ -4,15 +4,22 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_margin="15dp">
+   >
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#F4F4F4"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="10dp"
         >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#F4F4F4"
+        android:padding="10dp"
+
+        >
         <LinearLayout
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -43,18 +50,26 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnThanhToan"
-            style="@style/AppTheme.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Thanh toán"
-            android:textColor="#FFF"
-            android:textSize="10dp"
+<!--        <Button-->
+<!--            android:id="@+id/btnThanhToan"-->
+<!--            style="@style/AppTheme.Button"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:text="Thanh toán"-->
+<!--            android:textColor="#FFF"-->
+<!--            android:textSize="10dp"-->
+
+<!--            />-->
+
+        <ImageView
+            android:id="@+id/btnthanhToan"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:background="@drawable/da_thanh_toan"
 
             />
-
 
     </LinearLayout>
     </androidx.cardview.widget.CardView>

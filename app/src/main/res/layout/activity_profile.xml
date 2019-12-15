@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
-
     tools:context=".fragments.ProfileFragment">
 
 <!--    <View-->
@@ -21,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layout_marginBottom="50dp"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -112,11 +111,16 @@
                         app:contentPaddingTop="10dp">
 
                         <TableLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:padding="10dp">
-                            <TableRow android:layout_margin="5dp">
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:stretchColumns="0,1"
+                            android:visibility="visible">
+                            <TableRow
+                                android:background="#5s5s5"
+                                android:layout_marginBottom="15dp">
+
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -129,11 +133,14 @@
                                 <EditText
                                     android:id="@+id/edtEmail"
                                     style="@style/styleForEditText"
+                                    android:layout_width="195dp"
                                     android:background="@drawable/edt_greneral"
-                                    android:hint="Email" />
+                                    android:hint="Email"
+                                    android:textAlignment="center"
+                                    android:gravity="center"/>
                             </TableRow>
 
-                            <TableRow android:layout_margin="5dp">
+                            <TableRow android:layout_marginBottom="15dp">
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -148,10 +155,13 @@
                                     android:id="@+id/edtFullname"
                                     style="@style/styleForEditText"
                                     android:background="@drawable/edt_greneral"
-                                    android:hint="Name" />
+                                    android:hint="Name"
+                                    android:textAlignment="center"
+                                    android:gravity="center"
+                                    />
                             </TableRow>
 
-                            <TableRow android:layout_margin="5dp">
+                            <TableRow android:layout_marginBottom="15dp">
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -165,14 +175,15 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/spnGender"
                                     android:textColor="@color/blackFont"
-                                    android:textSize="20dp"
-
+                                    android:textSize="25dp"
+                                    android:textAlignment="center"
+                                    android:gravity="center"
                                     android:textStyle="bold"/>
 
 
                             </TableRow>
 
-                            <TableRow android:layout_margin="5dp">
+                            <TableRow android:layout_marginBottom="15dp">
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -184,14 +195,16 @@
 
                                 <EditText
                                     android:id="@+id/edtBirthdate"
-                                    style="@style/styleForEditText"
                                     android:background="@drawable/edt_greneral"
-                                    android:hint="Birhdate" />
+                                    android:hint="Birhdate"
+                                    android:textAlignment="center"
+                                    />
                                 <Button android:layout_width="30dp"
                                     android:layout_height="30dp"
                                     android:layout_gravity="right"
                                     android:background="@drawable/ic_calendar"
                                    android:id="@+id/btnCalenderBirth"
+
                                     />
                             </TableRow>
 
@@ -272,4 +285,4 @@
     </LinearLayout>
 
 
-</FrameLayout>
+</LinearLayout>

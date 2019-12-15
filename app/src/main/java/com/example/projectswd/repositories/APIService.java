@@ -35,10 +35,12 @@ public interface APIService {
 
 
     @POST(ConfigAPI.Api.LOGIN)
+    @Headers("Content-Type:application/json")
     Call<ResponseBody> gettToken(@Query("username") String username, @Query("password") String password);
 
     @GET(ConfigAPI.Api.GETUSER)
-    Call<User> getInforByUsername(@Path("username") String username, @Header("Authorization") String token);
+    @Headers("Content-Type:application/json")
+    Call<User> getInforByUsername( @Header("Authorization") String token,@Path("username") String username);
     // @Header("Author") String
 //    @GET(ConfigAPI.Api.GETRECEIPTS)
 //    Call<HouseRecipt> getListRecipts (@Path("type") String type,@Header("Authorization")  String token );

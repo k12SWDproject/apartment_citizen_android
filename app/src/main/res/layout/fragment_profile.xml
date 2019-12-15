@@ -125,14 +125,15 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:padding="10dp">
+                            >                           >
 
-                            <TableRow android:layout_margin="5dp">
+                            <TableRow
+                                android:layout_marginBottom="15dp">
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginRight="10dp"
+
                                     android:text="Họ và tên"
                                     android:textColor="@color/blackFont"
                                     android:textSize="20dp"
@@ -140,12 +141,15 @@
 
                                 <EditText
                                     android:id="@+id/edtFullname"
-                                    style="@style/styleForEditText"
+
+                                    android:layout_width="232dp"
                                     android:background="@drawable/edt_greneral"
-                                    android:hint="Name" />
+                                    android:hint="Name"
+                                    android:textAlignment="center" />
                             </TableRow>
 
-                            <TableRow android:layout_margin="5dp">
+                            <TableRow
+                                android:layout_marginBottom="15dp">
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -155,18 +159,20 @@
                                     android:textSize="20dp"
                                     android:textStyle="bold" />
 
-                                <Spinner  android:layout_width="match_parent"
+                                <Spinner
+                                    android:layout_width="150dp"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/spnGender"
                                     android:textColor="@color/blackFont"
-                                    android:textSize="20dp"
-
+                                    android:textSize="25dp"
+                                    android:textAlignment="center"
                                     android:textStyle="bold"/>
 
 
                             </TableRow>
 
-                            <TableRow android:layout_margin="5dp">
+                            <TableRow
+                                android:layout_marginBottom="15dp">
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -178,9 +184,12 @@
 
                                 <EditText
                                     android:id="@+id/edtBirthdate"
-                                    style="@style/styleForEditText"
+
                                     android:background="@drawable/edt_greneral"
-                                    android:hint="Birhdate" />
+                                    android:hint="Birhdate"
+                                    android:textAlignment="center"
+                                    />
+
                                 <Button android:layout_width="30dp"
                                     android:layout_height="30dp"
                                     android:layout_gravity="right"
@@ -189,7 +198,8 @@
                                     />
                             </TableRow>
 
-                            <TableRow android:layout_margin="5dp">
+                            <TableRow
+                                android:layout_marginBottom="15dp">
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -201,27 +211,13 @@
 
                                 <EditText
                                     android:id="@+id/edtEmail"
-                                    style="@style/styleForEditText"
+
                                     android:background="@drawable/edt_greneral"
-                                    android:hint="Email" />
+                                    android:hint="Email"
+                                    android:textAlignment="center"/>
                             </TableRow>
 
-                            <TableRow android:layout_margin="5dp">
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="SĐT"
-                                    android:textColor="@color/blackFont"
-                                    android:textSize="20dp"
-                                    android:textStyle="bold" />
-
-                                <EditText
-                                    android:id="@+id/edtNumberphone"
-                                    style="@style/styleForEditText"
-                                    android:background="@drawable/edt_greneral"
-                                    android:hint="Number" />
-                            </TableRow>
 
 
                         </TableLayout>

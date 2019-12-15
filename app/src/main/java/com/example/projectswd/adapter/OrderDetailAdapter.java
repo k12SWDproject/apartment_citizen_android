@@ -10,6 +10,7 @@ import com.example.projectswd.R;
 import com.example.projectswd.model.Order;
 import com.example.projectswd.model.OrderDetail;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public class OrderDetailAdapter extends BaseAdapter {
@@ -43,7 +44,7 @@ public class OrderDetailAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            convertView = inflater.inflate(R.layout.item_order, parent, false);
+            convertView = inflater.inflate(R.layout.item_order_detail, parent, false);
 
         }
 //        List<OrderDetail> orderDetails = orderDTOS.get(position).getOrderDetail();
@@ -51,9 +52,13 @@ public class OrderDetailAdapter extends BaseAdapter {
         OrderDetail order = orderDetails.get(position);
         TextView txtName = convertView.findViewById(R.id.txtNameOrderDetail);
         TextView txtQuantity = convertView.findViewById(R.id.txtQuantityOrderDetail);
-        TextView total = convertView.findViewById(R.id.txtPriceOrderDetail);
+        TextView total = convertView.findViewById(R.id.txtTotalOrderDetail);
+//        product.getPrice().multiply(new BigInteger(quantity+"")).toString()
 
-
+        txtName.setText(order.getName());
+        txtQuantity.setText(order.getQuantity()+"");
+//        total.setText(order.getPrice().multiply(new BigInteger((order.getQuantity()+"")).toString());
+        total.setText(order.getPrice().multiply(new BigInteger(order.getQuantity()+"")).toString() + " VNĐ");
         return convertView;
     }
 }

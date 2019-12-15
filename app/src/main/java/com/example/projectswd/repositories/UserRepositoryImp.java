@@ -2,6 +2,11 @@ package com.example.projectswd.repositories;
 
 
 
+import android.content.Intent;
+import android.widget.Toast;
+
+import com.example.projectswd.activities.LoginActivity;
+import com.example.projectswd.activities.MenuActivity;
 import com.example.projectswd.model.FilterEmail;
 import com.example.projectswd.model.FilterHouse;
 import com.example.projectswd.model.User;
@@ -161,6 +166,42 @@ public class UserRepositoryImp implements UserRepository {
             @Override
             public void onFailure(Call<User> call, Throwable t) {
                 callBackData.fail("Vui lòng kiểm tra lại");
+            }
+        });
+    }
+
+    @Override
+    public void getUserByUsername(String token, String username, final CallBackData<User> callBackData) {
+
+       ClientApi clientApi = new ClientApi();
+       Call<User> call = clientApi.APIService().getInforByUsername(token,username);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if(response.isSuccessful()){
+
+                    try{
+
+                        if(response.code()==200){
+                            User user = new User();
+                            user = response.body();
+                            callBackData.success(user);
+                        }else{
+                            callBackData.fail("Lấy thông tin thất bại");
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+
+                }
+
+            }
+
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                callBackData.fail("Lấy thông tin thất bại");
             }
         });
     }
