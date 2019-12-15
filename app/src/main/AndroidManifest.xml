@@ -20,7 +20,9 @@
         <activity android:name=".activities.OrtherActivity" />
         <activity android:name=".activities.WifiActivity" />
         <activity android:name=".activities.RegisterAcitvity" />
-        <activity android:name=".activities.LoginGoogleActivity" />
+        <activity android:name=".activities.LoginGoogleActivity" >
+
+        </activity>
 
         <activity android:name=".activities.ManageMembersActivity" />
 

@@ -24,6 +24,7 @@ import com.example.projectswd.adapter.OrderAdapter;
 import com.example.projectswd.contract.ProductFragmentContract;
 import com.example.projectswd.model.OrderDTO;
 import com.example.projectswd.model.OrderDetail;
+import com.example.projectswd.model.User;
 import com.example.projectswd.presenters.ProductFragmentPresenter;
 
 import java.io.Serializable;
@@ -41,6 +42,7 @@ public class OrderFragment extends Fragment implements ProductFragmentContract.v
     }
     private ProductFragmentPresenter presenter;
     String token;
+    User user;
     TextView txtNotReceive, txtReceived;
     ListView lvNotReceive, lvReceived;
     List<OrderDTO> orderNotReceive,orderReceived;
@@ -48,7 +50,9 @@ public class OrderFragment extends Fragment implements ProductFragmentContract.v
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_order, container, false);
-        token = getArguments().getString("TOKEN");
+        final Intent intent = getActivity().getIntent();
+        user = (User) intent.getSerializableExtra("USERINFO");
+        token = intent.getStringExtra("TOKEN");
         lvNotReceive= view.findViewById(R.id.lvOrderNotReceive);
         lvReceived = view.findViewById(R.id.lvOrderReceived);
         txtReceived = view.findViewById(R.id.txtOrderReceivedNull);

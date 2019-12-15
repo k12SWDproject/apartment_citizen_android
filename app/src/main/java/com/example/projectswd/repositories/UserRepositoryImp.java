@@ -9,6 +9,7 @@ import com.example.projectswd.activities.LoginActivity;
 import com.example.projectswd.activities.MenuActivity;
 import com.example.projectswd.model.FilterEmail;
 import com.example.projectswd.model.FilterHouse;
+import com.example.projectswd.model.LoginGoogle;
 import com.example.projectswd.model.User;
 import com.example.projectswd.model.UserUpdateDTO;
 import com.example.projectswd.utils.CallBackData;
@@ -24,6 +25,33 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserRepositoryImp implements UserRepository {
+    @Override
+    public void loginGoogle(LoginGoogle token, final CallBackData<String> callBackData) {
+        ClientApi clientApi = new ClientApi();
+        Call<ResponseBody>  call = clientApi.APIService().loginGoogle(token);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try{
+                    if(response.code() == 200){
+                        callBackData.success(response.body().string());
+                    }else if (response.code() == 204){
+                        callBackData.success(response.body().string());
+                    }else{
+                        callBackData.fail("Đăng nhập thất bại");
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+    }
+
     @Override
     public void getListMember(String token, FilterHouse filterHouse, final CallBackData<List<User>> callBackData) {
         Gson gson = new Gson();

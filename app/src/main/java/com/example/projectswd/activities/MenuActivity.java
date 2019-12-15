@@ -15,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.projectswd.contract.MenuActivityContract;
 import com.example.projectswd.fragments.DateTimeFragment;
 import com.example.projectswd.fragments.HomeFragment;
 import com.example.projectswd.R;
@@ -23,19 +24,20 @@ import com.example.projectswd.fragments.ProfileFragment;
 import com.example.projectswd.model.CartObject;
 import com.example.projectswd.model.Product;
 import com.example.projectswd.model.User;
+import com.example.projectswd.presenters.MenuActivityPresenter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class MenuActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class MenuActivity extends AppCompatActivity implements MenuActivityContract.view {
     private TextView txtNameOwner,txtApartmentNumber;
 
 
     private User user;
     private  String token;
-
+    private MenuActivityPresenter presenter;
     public static List<CartObject> productList;
     public static List<Product> productsToCompare;
     public static String tokenTmp;
@@ -67,7 +69,7 @@ public class MenuActivity extends AppCompatActivity implements DatePickerDialog.
                             break;
 
                         case R.id.navigation_notifications:
-                               Bundle bundle1 = new Bundle();
+                            Bundle bundle1 = new Bundle();
                             bundle1.putSerializable("USERINFO",user);
                             bundle1.putString("TOKEN",token);
                             selctFrag= new ProfileFragment();
@@ -94,6 +96,8 @@ public class MenuActivity extends AppCompatActivity implements DatePickerDialog.
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("USERINFO");
         token = intent.getStringExtra("TOKEN");
+        initPresenter();
+        presenter.getUser(token, user.getUsername());
         tokenTmp = token;
         txtNameOwner = findViewById(R.id.txtNameOwner);
         txtApartmentNumber = findViewById(R.id.txtAparmentID);
@@ -151,44 +155,22 @@ public class MenuActivity extends AppCompatActivity implements DatePickerDialog.
         startActivity(intent);
     }
 
-    @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        String day = "", months = "";
+   private void initPresenter(){
+        presenter = new MenuActivityPresenter(this);
 
-        if (dayOfMonth < 10) {
-            day = "0" + dayOfMonth;
-        } else {
-            day = dayOfMonth + "";
-        }
-        if (month + 1 < 10) {
-            months = "0" + (month + 1);
-        } else {
-            months = month + 1 + "";
-        }
+   }
+
+
+    @Override
+    public void getUserSuccess(User user) {
+
+    }
+
+    @Override
+    public void getUserFail(String msg) {
+
     }
 
 
-//    @Override
-//    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-//        String day = "", months = "";
-//
-//        if (dayOfMonth < 10) {
-//            day = "0" + dayOfMonth;
-//        } else {
-//            day = dayOfMonth + "";
-//        }
-//        if (month + 1 < 10) {
-//            months = "0" + (month + 1);
-//        } else {
-//            months = month + 1 + "";
-//        }
-//
-//    }
-//    private void getTime(String tag) {
-//        DialogFragment fragment = new DateTimeFragment();
-//
-//        fragment.show(getSupportFragmentManager(), tag);
-//
-//
-//    }
+
 }

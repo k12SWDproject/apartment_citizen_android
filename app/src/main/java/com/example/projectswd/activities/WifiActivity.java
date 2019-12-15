@@ -42,7 +42,7 @@ public class WifiActivity extends AppCompatActivity implements WifiActivityContr
 //        getListReciptPresenter = new GetListReciptPresenter(this);
 //        getListReciptPresenter.getList(token, "WIFI_TYPE");
         initPresenter();
-        presenter.getListWifiReceipt(token,"WIFI_TYPE");
+        presenter.getListWifiReceipt(token,"INTERNET_TYPE");
         txtUserinfo.setText(user.getHouse().getHouseName());
     }
 

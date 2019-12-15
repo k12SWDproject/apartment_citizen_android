@@ -4,6 +4,7 @@ package com.example.projectswd.repositories;
 
 import com.example.projectswd.model.FilterObj;
 import com.example.projectswd.model.HouseRecipt;
+import com.example.projectswd.model.LoginGoogle;
 import com.example.projectswd.model.OrderDTO;
 import com.example.projectswd.model.PayObject;
 import com.example.projectswd.model.Product;
@@ -37,6 +38,10 @@ public interface APIService {
     @POST(ConfigAPI.Api.LOGIN)
     @Headers("Content-Type:application/json")
     Call<ResponseBody> gettToken(@Query("username") String username, @Query("password") String password);
+
+    @POST(ConfigAPI.Api.LOGINGOOGLE)
+    @Headers("Content-Type:application/json")
+    Call<ResponseBody> loginGoogle(@Body LoginGoogle loginGoogle);
 
     @GET(ConfigAPI.Api.GETUSER)
     @Headers("Content-Type:application/json")
