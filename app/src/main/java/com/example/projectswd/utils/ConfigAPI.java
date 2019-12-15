@@ -5,6 +5,7 @@ public class ConfigAPI {
 
     public interface Api{
         String LOGIN = "login";
+        String LOGINGOOGLE = "api/login/google";
         String GETUSER ="api/users/{username}";
         String GETRECEIPTS ="api/receipts/user/{type}";
         String GETDETAILRECEIPT ="api/receipts";

@@ -110,22 +110,38 @@ public class ProfileFragment extends DialogFragment implements ProfileActivityCo
             }
         });
 
-
-        edtFullname.setText(user.getFullName());
-        if (user.getGender() == 1) {
-//            spinnerGender.setAdapter();
-            spinnerGender.setSelection(dataAdapter.getPosition("Nam"));
-
-
-        } else {
-            spinnerGender.setSelection(dataAdapter.getPosition("Nữ"));
-
+        if(user.getFullName() == null){
+            edtFullname.setText(user.getUsername());
+        }else{
+            edtFullname.setText(user.getFullName());
         }
+
+
+        if(user.getGender()==null){
+            spinnerGender.setSelection(dataAdapter.getPosition("Nam"));
+        }else{
+            if (user.getGender() == 1) {
+//            spinnerGender.setAdapter();
+                spinnerGender.setSelection(dataAdapter.getPosition("Nam"));
+
+
+            } else {
+                spinnerGender.setSelection(dataAdapter.getPosition("Nữ"));
+
+            }
+        }
+
 
         edtEmail.setText(user.getUsername());
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
-        edtBirthdate.setText(sf.format(user.getDateOfBirth()));
-        edtPhoneNo.setText(user.getIdNumber() + "");
+        Date date = new Date();
+        if(user.getDateOfBirth()==null){
+            edtBirthdate.setText(sf.format(date));
+        }else{
+            edtBirthdate.setText(sf.format(user.getDateOfBirth()));
+        }
+
+
 
 
         edtBtn.setOnClickListener(new View.OnClickListener() {

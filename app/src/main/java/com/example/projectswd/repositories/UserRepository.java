@@ -2,6 +2,7 @@ package com.example.projectswd.repositories;
 
 import com.example.projectswd.model.FilterEmail;
 import com.example.projectswd.model.FilterHouse;
+import com.example.projectswd.model.LoginGoogle;
 import com.example.projectswd.model.User;
 import com.example.projectswd.model.UserUpdateDTO;
 import com.example.projectswd.utils.CallBackData;
@@ -11,6 +12,8 @@ import java.util.List;
 import okhttp3.ResponseBody;
 
 public interface UserRepository {
+    void loginGoogle(LoginGoogle loginGoogle, CallBackData<String> callBackData);
+
     void getListMember(String token, FilterHouse filterHouse, CallBackData<List<User>> callBackData );
     void getMemberByEmail(String token, FilterEmail filterEmail, CallBackData<List<User>> callBackData);
     void addMember (String token, String username, CallBackData<ResponseBody> callBackData);
