@@ -11,8 +11,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_marginBottom="70dp"
-        android:layout_height="match_parent">
+        android:layout_marginBottom="60dp"
+        android:layout_height="match_parent"
+        android:elevation="1dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
@@ -38,16 +39,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:padding="10dp"
+
+                    >
 
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Số dư trong tài khoản"
+                    android:text="  Số dư trong tài khoản"
                     android:layout_marginLeft="10dp"
                     android:textColor="#020202"
                     android:textSize="15dp"
+                    android:drawableStart="@drawable/ic_wallet"
                     android:textStyle="bold" />
 
                 <TextView
@@ -89,9 +94,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
                     android:layout_weight="3.5"
-                    android:drawableTop="@drawable/idea"
                     android:padding="2dp"
 
+                    android:drawableTop="@drawable/idea"
                     android:onClick="clickToElectric"
                     android:text="Điện" />
 
@@ -135,8 +140,9 @@
                     android:layout_marginLeft="25dp"
                     android:layout_weight="3.5"
                     android:background="@drawable/round_bg2"
+                    android:padding="2dp"
 
-                    android:drawableTop="@drawable/light"
+                    android:drawableTop="@drawable/ic_temple"
                     android:onClick="clickToPhiChungCu"
                     android:text="Phí chung cư" />
 
@@ -169,17 +175,17 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:drawableTop="@drawable/light"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="350dp"
+                    android:layout_height="100dp"
                     android:layout_marginLeft="25dp"
                     android:layout_weight="2"
-                    android:onClick="clickToService"
                     android:background="@drawable/round_bg2"
-                    android:padding="2dp"
+                    android:drawableTop="@drawable/ic_best_seller"
+
+                    android:onClick="clickToService"
+                    android:padding="10dp"
 
                     android:text="Dịch vụ" />
-
 
 
             </LinearLayout>

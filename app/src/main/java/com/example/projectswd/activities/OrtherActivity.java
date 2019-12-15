@@ -75,7 +75,7 @@ public class OrtherActivity extends AppCompatActivity implements OrtherActivityC
             adapterPayed.setListReceipt(listPayed);
 
             LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) lvPayedReceipt.getLayoutParams();
-            lp.height = 300 * listPayed.size();
+            lp.height = 350 * listPayed.size();
 
             lvPayedReceipt.setLayoutParams(lp);
             lvPayedReceipt.setAdapter(adapterPayed);
@@ -106,7 +106,7 @@ public class OrtherActivity extends AppCompatActivity implements OrtherActivityC
             adapterNotPay.setListReceipt(listNotPay);
 
             LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) lvNotPayedReceipt.getLayoutParams();
-            lp.height = 300 * listNotPay.size();
+                    lp.height = 350 * listNotPay.size();
             lvNotPayedReceipt.setLayoutParams(lp);
 
             lvNotPayedReceipt.setAdapter(adapterNotPay);

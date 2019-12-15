@@ -62,11 +62,17 @@ public class ReceiptAdapter extends BaseAdapter {
 
 
         txtThanhGia.setText("Thành Giá: "+ receiptItem.getTotal()+"");
-        ImageView imageView = convertView.findViewById(R.id.btnThanhToan);
+        ImageView imageView = convertView.findViewById(R.id.btnthanhToan);
         if(receiptItem.getStatus()==1){
-            imageView.setBackgroundResource(R.drawable.button_thanh_toan);
+//            imageView.setBackgroundResource(R.drawable.round_bg);
+//
+//            imageView.setText("Thanh Toán");
+            imageView.setBackgroundResource(R.drawable.thanhtoan);
         }else {
-            imageView.setBackgroundResource(R.drawable.btn_da_thanh_toan);
+//            imageView.setBackgroundResource(R.drawable.round_bg_dathanhtoan);
+//            imageView.setText("Đã Thanh Toán");
+            imageView.setBackgroundResource(R.drawable.da_thanh_toan);
+
 
         }
 

@@ -1,5 +1,6 @@
 package com.example.projectswd.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,8 +60,11 @@ public class OrderAdapter extends BaseAdapter {
         txtName.setText(date);
         if(order.getStatus()==0){
             txtQuantity.setText("Chưa nhận hàng");
+            txtQuantity.setTextColor(Color.RED);
+
         }else{
             txtQuantity.setText("Đã nhận hàng");
+            txtQuantity.setTextColor(Color.GREEN);
         }
 
         total.setText(order.getTotal()+"");

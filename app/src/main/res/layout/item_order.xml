@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/gas"
-            />
+        android:layout_height="30dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
@@ -21,19 +16,26 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_weight="1"
-                android:text="sdsda"
+                android:text="Tên order"
+                android:textColor="@color/blackFont"
                 android:gravity="center"
                 android:id="@+id/txtNameProductOrder"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:textStyle="bold"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_weight="1"
-                android:text="sdsda"
+                android:text="Số lượng order"
+                android:textColor="#000000"
+
                 android:gravity="center"
                 android:id="@+id/txtQuantityOfOrder"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:textStyle="bold"/>
             <TextView
                 android:layout_width="match_parent"
+                android:textColor="@color/blackFont"
+
                 android:layout_weight="1"
                 android:text="2000000"
                 android:id="@+id/txtTotalOrder"

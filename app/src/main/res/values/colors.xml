@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="blackFont">#000</color>
+    <color name="bottomNavClick">#4267B2</color>
+    <color name="bottomNavUnClick">#8F8F8F</color>
 
 
     <!--colors for modern ui-->

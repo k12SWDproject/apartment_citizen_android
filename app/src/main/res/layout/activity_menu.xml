@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:orientation="vertical"
-        android:background="@drawable/wallpaper1"
+        android:background="@drawable/nendaidien"
         tools:ignore="MissingConstraints">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -22,7 +22,7 @@
             android:layout_marginTop="20dp"
             android:onClick="clickToProfile"
             android:layout_gravity="center"
-            android:src="@drawable/profile"
+            android:src="@drawable/bookcaat"
            />
         <TextView
             android:id="@+id/txtNameOwner"
@@ -52,7 +52,6 @@
         android:layout_width="match_parent"
         android:layout_marginTop="200dp"
         android:id="@+id/fragment_content"
-
         android:layout_height="match_parent"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -62,7 +61,8 @@
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:visibility="visible"
-
+        app:itemIconTint="@drawable/bottom_nav_icon_color_selector"
+        app:itemTextColor="@drawable/bottom_nav_icon_color_selector"
         android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

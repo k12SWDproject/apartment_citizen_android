@@ -13,6 +13,8 @@ import com.example.projectswd.model.FilterObj;
 import com.example.projectswd.model.ReceiptDTO;
 import com.example.projectswd.model.User;
 import com.example.projectswd.presenters.DetailPayedActivityPresenter;
+
+import java.text.SimpleDateFormat;
 //import com.example.projectswd.presenters.DetailReceiptPresenter;
 
 public class DetailPayedActivity extends AppCompatActivity implements DetailPayedActivityContract.view {
@@ -59,7 +61,8 @@ public class DetailPayedActivity extends AppCompatActivity implements DetailPaye
         txtIdRecipt.setText(receipt.getReceipt().getId()+"");
         txtMoney.setText(receipt.getReceiptDetailList().get(0).getTotal()+"");
         txtFullname.setText(user.getFullName());
-        txtDateOfReceipt.setText(receipt.getReceipt().getPaymentDate()+"");
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+        txtDateOfReceipt.setText(sf.format(receipt.getReceipt().getPaymentDate())+"");
         txtQuantity.setText(receipt.getReceiptDetailList().get(0).getQuantity()+"");
         txtNameOfQuantity.setText("Điện năng tiêu thụ");
         txtNameReceipt.setText(receipt.getReceipt().getTitle());

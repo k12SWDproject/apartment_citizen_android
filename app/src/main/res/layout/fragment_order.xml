@@ -23,21 +23,53 @@
                 android:layout_margin="5dp"
                 android:orientation="vertical">
 
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Đơn hàng chưa nhận"
-                    android:textColor="#000"
+                    android:textColor="#FFFFFF"
                     android:textSize="20dp"
                     android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="#000"
+                    android:padding="5dp"
+
 
                     />
-
-                <LinearLayout
+                <TableLayout
+                    android:layout_height="match_parent"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:stretchColumns="1"
                     android:layout_margin="5dp"
-                    android:background="#000" />
+                    xmlns:android="http://schemas.android.com/apk/res/android">
+                    <TableRow>
+                        <TextView
+                            android:text="Thời gian"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:textSize="15dp"
+                            android:gravity="center"
+                            android:layout_marginLeft="20dp"/>
+                        <TextView
+                            android:text="Tình trạng"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:textSize="15dp"
+                            android:gravity="center"/>
+                        <TextView
+                            android:text="Giá tiền"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:textSize="15dp"
+                            android:gravity="center"
+                            android:layout_marginRight="20dp"/>
+
+                    </TableRow>
+
+                </TableLayout>
+
+
 
                 <ListView
                     android:id="@+id/lvOrderNotReceive"
@@ -106,21 +138,54 @@
                 android:layout_margin="5dp"
                 android:orientation="vertical">
 
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Đơn hàng đã nhận"
-                    android:textColor="#000"
+                    android:textColor="#FFFFFF"
                     android:textSize="20dp"
                     android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="#000"
+                    android:padding="5dp"
 
                     />
-
-                <LinearLayout
+                <TableLayout
+                    android:layout_height="match_parent"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:stretchColumns="1"
                     android:layout_margin="5dp"
-                    android:background="#000" />
+                    xmlns:android="http://schemas.android.com/apk/res/android">
+                    <TableRow>
+                        <TextView
+                            android:text="Thời gian"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:textSize="15dp"
+                            android:gravity="center"
+                            android:layout_marginLeft="20dp"/>
+                        <TextView
+                            android:text="Tình trạng"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:textSize="15dp"
+                            android:gravity="center"/>
+                        <TextView
+                            android:text="Giá tiền"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:textSize="15dp"
+                            android:gravity="center"
+                            android:layout_marginRight="20dp"/>
+
+                    </TableRow>
+
+                </TableLayout>
+
+
+
+
 
                 <ListView
                     android:id="@+id/lvOrderReceived"

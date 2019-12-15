@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="@drawable/wallpaper1"
+        android:background="@drawable/nendaidien"
         android:orientation="vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -88,6 +88,51 @@
             android:background="#979797"
 
             />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:layout_margin="10dp"
+           >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:layout_margin="10dp">
+
+               <com.google.android.material.textfield.TextInputLayout
+                   android:layout_width="280dp"
+                   android:layout_height="match_parent"
+
+                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                   android:hint="Search User">
+                   <com.google.android.material.textfield.TextInputEditText
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:padding="5dp"
+                       android:textSize="15dp"
+                       android:textColor="#000000"
+                       android:id="@+id/edtSearchMember"
+
+                       />
+
+               </com.google.android.material.textfield.TextInputLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/round_bg"
+                    android:text="Search"
+                    android:onClick="clickToAddMember"
+                    android:layout_gravity="right"
+                    android:textColor="#FFFFFF" />
+
+
+            </LinearLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,54 +140,12 @@
 
             android:layout_margin="5dp"
             >
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                app:cardBackgroundColor="#F7F7F7"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="2dp"
-                app:cardUseCompatPadding="true"
-                >
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:weightSum="3"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/edtSearchMember"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:hint="Nhập tên sản phẩm"
-                        android:layout_weight="3"
-                        android:textColorHint="#000"
-                        android:textStyle="italic"
-                        android:background="#fff"/>
-
-                    <Button
-                        android:layout_weight="0"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/delete_btn"
-                        android:text="Delete"
-
-                        android:onClick="clickToAddMember"
-                        android:layout_gravity="right"
-                        android:textColor="#FFF" />
 
 
-                </LinearLayout>
-
-
-
-            </androidx.cardview.widget.CardView>
             <ListView
+                android:id="@+id/listManageMembers"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/listManageMembers"/>
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -4,28 +4,22 @@ package com.example.projectswd.fragments;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDialogFragment;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+
 import com.example.projectswd.R;
 import com.example.projectswd.activities.ManageMembersActivity;
-import com.example.projectswd.activities.MenuActivity;
 import com.example.projectswd.contract.ProfileActivityContract;
 import com.example.projectswd.model.House;
 import com.example.projectswd.model.User;
@@ -35,7 +29,6 @@ import com.example.projectswd.presenters.ProfileActivityPresenter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,14 +37,12 @@ import java.util.List;
 public class ProfileFragment extends DialogFragment implements ProfileActivityContract.view, DatePickerDialog.OnDateSetListener {
 
 
-
-
     public ProfileFragment() {
         // Required empty public constructor
     }
 
-    EditText edtFullname, edtEmail, edtPhoneNo;
     public EditText edtBirthdate;
+    EditText edtFullname, edtEmail, edtPhoneNo;
     TextView titleName;
     Button edtBtn, updateBtn, btnManage, btnCalender;
     Spinner spinnerGender;
@@ -71,9 +62,6 @@ public class ProfileFragment extends DialogFragment implements ProfileActivityCo
         house = user.getHouse();
 
 
-
-
-
         edtFullname = view.findViewById(R.id.edtFullname);
         spinnerGender = view.findViewById(R.id.spnGender);
         edtEmail = view.findViewById(R.id.edtEmail);
@@ -89,7 +77,7 @@ public class ProfileFragment extends DialogFragment implements ProfileActivityCo
 
         gender.add("Nam");
         gender.add("Nữ");
-       dataAdapter = new ArrayAdapter<String>(getActivity(),
+        dataAdapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_spinner_item, gender);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerGender.setAdapter(dataAdapter);
@@ -166,8 +154,7 @@ public class ProfileFragment extends DialogFragment implements ProfileActivityCo
         });
 
 
-
-       this.showDatePickerDialog();
+        this.showDatePickerDialog();
 
 
         return view;
@@ -178,12 +165,12 @@ public class ProfileFragment extends DialogFragment implements ProfileActivityCo
     }
 
 
-
     @Override
     public void updateMemberSuccess(User user) {
 
         initPresenter();
-        presenter.getUser(token,user.getUsername());
+        presenter.getUser(token, user.getUsername());
+        Toast.makeText(getActivity(), "Cập nhật thành công", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -238,17 +225,17 @@ public class ProfileFragment extends DialogFragment implements ProfileActivityCo
         } else {
             months = month + 1 + "";
         }
-        showDate(year,months,day);
+        showDate(year, months, day);
 
 
     }
-//
-    private void showDate(int year, String months, String day){
+
+    //
+    private void showDate(int year, String months, String day) {
         edtBirthdate.setText(year + "-" + months + "-" + day);
     }
 
-    private void showDatePickerDialog()
-    {
+    private void showDatePickerDialog() {
         // Get open DatePickerDialog button.
 //        Button datePickerDialogButton = btnCalender(R.id.datePickerDialogButton);
         btnCalender.setOnClickListener(new View.OnClickListener() {
@@ -262,7 +249,7 @@ public class ProfileFragment extends DialogFragment implements ProfileActivityCo
 
                         strBuf.append(year);
                         strBuf.append("-");
-                        strBuf.append(month+1);
+                        strBuf.append(month + 1);
                         strBuf.append("-");
                         strBuf.append(dayOfMonth);
 
