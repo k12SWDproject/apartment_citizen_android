@@ -39,16 +39,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:padding="10dp"
+
+                    >
 
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Số dư trong tài khoản"
+                    android:text="  Số dư trong tài khoản"
                     android:layout_marginLeft="10dp"
                     android:textColor="#020202"
                     android:textSize="15dp"
+                    android:drawableStart="@drawable/ic_wallet"
                     android:textStyle="bold" />
 
                 <TextView
@@ -90,9 +94,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
                     android:layout_weight="3.5"
-                    android:drawableTop="@drawable/idea"
                     android:padding="2dp"
 
+                    android:drawableTop="@drawable/idea"
                     android:onClick="clickToElectric"
                     android:text="Điện" />
 
@@ -136,8 +140,9 @@
                     android:layout_marginLeft="25dp"
                     android:layout_weight="3.5"
                     android:background="@drawable/round_bg2"
+                    android:padding="2dp"
 
-                    android:drawableTop="@drawable/ic_late_fee"
+                    android:drawableTop="@drawable/ic_temple"
                     android:onClick="clickToPhiChungCu"
                     android:text="Phí chung cư" />
 
